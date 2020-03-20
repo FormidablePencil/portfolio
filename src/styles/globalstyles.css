@@ -1,0 +1,91 @@
+/* div {
+   width: 100px;
+   height: 100px;
+   background-color: red;
+   animation-name: example;
+   animation-duration: 4s;
+ }
+ 
+ @keyframes example {
+   from {background-color: red;}
+   to {background-color: yellow;}
+ } */
+
+.carouselGradient1 {
+  background: linear-gradient(0.25turn, #85FFED, #61FF6D);
+}
+
+.carouselGradient2 {
+  background: linear-gradient(0.75turn, #25E2E2, #61FF6D);
+}
+
+.carouselGradient3 {
+  background: linear-gradient(0.25turn, #25E2E2, #AED0EC);
+}
+
+.colorGradient {
+  background:linear-gradient(0.40turn, #FBAAA7 ,#9597FB);
+  background-size: 400% 400%;
+  -webkit-animation: AnimationName 12s ease infinite;
+  -moz-animation: AnimationName 12s ease infinite;
+  -o-animation: AnimationName 12s ease infinite;
+  animation: AnimationName 12s ease infinite;
+}
+
+@-webkit-keyframes AnimationName {
+  0% {
+    background-position: 0% 14%
+  }
+  50% {
+    background-position: 100% 87%
+  }
+  100% {
+    background-position: 0% 14%
+  }
+}
+
+@-moz-keyframes AnimationName {
+  0% {
+    background-position: 0% 14%
+  }
+  50% {
+    background-position: 100% 87%
+  }
+  100% {
+    background-position: 0% 14%
+  }
+}
+
+@-o-keyframes AnimationName {
+  0% {
+    background-position: 0% 14%
+  }
+  50% {
+    background-position: 100% 87%
+  }
+  100% {
+    background-position: 0% 14%
+  }
+}
+
+@keyframes AnimationName {
+  0% {
+    background-position: 0% 14%
+  }
+  50% {
+    background-position: 100% 87%
+  }
+  100% {
+    background-position: 0% 14%
+  }
+}
+
+.zoom {
+  transition: transform .3s;
+  box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.1), 0 2px 4px -1px rgba(0, 0, 0, 0.06);
+}
+
+.zoom:hover {
+  transform: scale(1.1);
+  box-shadow: 0 10px 10px -1px rgba(0, 0, 0, 0.1), 0 2px 4px -1px rgba(0, 0, 0, 0.06);
+}

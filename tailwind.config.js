@@ -3,7 +3,10 @@ module.exports = {
     extend: {
       height: {
         hero: '30rem'
-      }
+      },
+      width: {
+        hero: '30rem'
+      },
     },
   },
   variants: {},
