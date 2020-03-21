@@ -7,6 +7,9 @@ module.exports = {
       width: {
         hero: '30rem'
       },
+      fontFamily: {
+        myFont1: ['Muli-SemiBold']
+      },
     },
   },
   variants: {},

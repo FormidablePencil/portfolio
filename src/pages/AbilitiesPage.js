@@ -1,11 +1,10 @@
 import React from 'react'
-import NavbarComp from '../components/NavbarComp'
+import NavbarComp from '../components/NavbarComps/NavbarComp'
 import AbilitiesContent from '../components/AbilitiesContent'
 const AbilitiesPage = () => {
    return (
       <div>
          <NavbarComp />
-         <Content />
          <AbilitiesContent />
          hi from abilites page
       </div>

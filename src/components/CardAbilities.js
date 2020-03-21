@@ -3,7 +3,7 @@ import someImage from '../assets/normal.jpg'
 import { Link } from 'react-router-dom'
 const CardAbilities = ({ h1, info }) => {
    return (
-      <Link to='/webdevtechnoœlogies'>
+      <Link to='/technologies'>
          <div
             onClick={() => console.log('redirect to abilities page')}
             className='zoom bg-white rounded-lg flex-1 h-64 m-4 p-6 flex flex-col items-center justify-evenly text-center'>

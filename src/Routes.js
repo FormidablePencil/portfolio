@@ -5,9 +5,10 @@ import {
    Route,
 } from "react-router-dom";
 import LandingPage from './pages/LandingPage';
-import Bio from './pages/Bio';
-import ShowcaseProjectsComp from './components/ShowcaseProjectsComp';
+import Bio from './pages/BioPage';
 import AbilitiesPage from './pages/AbilitiesPage';
+import ShowcaseProjectPage from './pages/ShowcaseProjectPage';
+import ResumePage from './pages/ResumePage';
 
 function Routes() {
    return (
@@ -15,8 +16,9 @@ function Routes() {
          <Switch>
             <Route exact path="/"><LandingPage /></Route>
             <Route path="/bio"><Bio /></Route>
-            <Route path='/project'><ShowcaseProjectsComp /></Route>
-            <Route path='/webdevtechnoœlogies'><AbilitiesPage /></Route>
+            <Route path="/resume"><ResumePage /></Route>
+            <Route path='/project'><ShowcaseProjectPage /></Route>
+            <Route path='/technologies'><AbilitiesPage /></Route>
          </Switch>
       </Router>
    )
