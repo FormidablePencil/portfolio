@@ -1,0 +1,147 @@
+%parallaxDimensions
+  height: 5000px
+  width: 100vw
+
+%hoverProperties
+  background-color: rgba(132,132,132,.4)
+  cursor: pointer
+
+.parallax
+  @extend %parallaxDimensions
+
+.parallaxTechnologiesSect
+  @extend %parallaxDimensions
+  height: 120vh
+
+.border
+  height: 10px
+  width: 100%
+  background-color: #0D0819
+
+.landingPage
+
+.bgImage
+  background-image: url('../assets/bilal-o-2W0AZVlVm3U-unsplash2.jpg')
+  height: 300vh
+
+.landingSection
+  .imgFrame
+    height: 20em
+    width: 20em
+    background-color: white
+    border-radius: 240em
+
+.BrandSection
+  .paragraph
+    width: 30em
+
+.techSection
+  .listOfTech
+    display: flex
+    flex-direction: column
+    li
+      width: 100px
+      &:hover
+        @extend %hoverProperties
+      img
+        object-fit: contain
+        width: 100px
+  .rightTech
+    align-items: flex-end
+    li
+      &:nth-child(even)
+        margin-right: 10em
+
+  .leftTech
+    align-items: flex-start
+    li
+      &:nth-child(even)
+        margin-left: 10em
+
+  .midTech
+    li
+      &:hover
+        @extend %hoverProperties
+      p
+        display: inline
+        color: #CCB7F9
+        font-size: 7em
+      p.firstLeter
+        color: white
+
+.projectSection
+  .frame
+    flex: 1
+    img
+      object-fit: contain
+  .macbook
+    width: 50em
+  .smartphone
+    width: 30em
+
+.projectSection
+  .container
+    width: 40em
+  .frame
+    display: flex
+    align-items: center
+    justify-content: center
+  .detailsBox
+    border-radius: .5em
+    margin: 1em
+    padding: 1em 2em 1em 2em
+    background-color: rgba(132,132,132,.3)
+    .messageMarginRight
+      margin: 0em 1em 0em 0em
+  .justifyBtnRight
+    display: flex
+    justify-content: flex-end
+  .moreSection
+    width: 100%
+    min-height: 6.5em
+    display: flex
+    flex-direction: row
+    .progressContainer
+      flex: 1
+      position: relative
+      .btnGoToDetailedPg
+        position: absolute
+        right: 0
+        bottom: 0
+    .techContainer
+      flex: 1
+      .chipMargin
+        margin: .2em
+
+.footer
+  background-color: #29005C
+  color: purple
+  height: 40em
+  display: flex
+  flex-direction: column
+  .border
+    height: 2em
+    background-color: grey
+  .container
+    flex: 1
+    margin: 0em -2em 2em 0em
+    .messageContainer
+      display: flex
+      flex-direction: column
+      align-items: flex-end
+      margin: 3em
+      width: 30em
+      .message
+        width: 28em
+        padding: 1em
+        height: 10em
+        background-color: grey
+        border-radius: .5em
+      .submitBtn
+        width: 8em
+        margin: 1em 0em 1em 0em
+    .contacts
+      margin: 3em
+      width: 30em
+      height: 15em
+      background-color: grey

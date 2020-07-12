@@ -1,24 +1,36 @@
 import React from 'react';
-import logo from './logo.svg';
 import './App.css';
+import './styles/globalStyles.sass'
+import LandingPage from './pages/LandingPage';
+import { ThemeProvider } from '@material-ui/core';
+import customTheme from './styles/customTheme';
+import { ParallaxProvider } from 'react-scroll-parallax';
+import { BrowserRouter as Router, Switch, Route } from 'react-router-dom';
+import Navbar from './Navbar';
+import ExperPg from './pages/ExperPg';
+import { DemoRoute } from './pages/DemoSection';
 
 function App() {
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.tsx</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
+    <div>
+      <ParallaxProvider>
+        <ThemeProvider theme={customTheme}>
+          <Router>
+            <Navbar />
+            <Switch>
+              <Route path="/home">
+                <LandingPage />
+              </Route>
+              {/* <Route path="/demo"> */}
+              <DemoRoute />
+              {/* </Route> */}
+              <Route path="/experimental">
+                <ExperPg />
+              </Route>
+            </Switch>
+          </Router>
+        </ThemeProvider>
+      </ParallaxProvider>
     </div>
   );
 }

@@ -1,0 +1,112 @@
+@import "./globalStyles"
+
+// @mixin content
+//   flex: 1
+//   border-radius: $borderRadius
+//   background-color: $lightPurple
+//   margin: 1em
+
+  // @mixin avatar($size, $circle: false)
+  //   width: $size
+  //   height: $size
+
+  // @if $circle
+  //   border-radius: $size / 2
+
+@mixin searchFeatureOuterContainer($m1, $m2, $m3, $m4)
+  flex: 1
+  border-radius: $borderRadius
+  background-color: $primaryPurple3
+  .searchBarContainer
+    input
+      margin: $m1 $m2 $m3 $m4
+      flex: 1
+      width: 100%
+      border-width: 2px
+      border-color: $borderColor
+      border-style: solid
+      color: $primaryTextColor
+      height: 3em
+      border-radius: $borderRadius
+  .searchResultSection
+    background: $lightPurple
+    border-color: $borderColor
+    border-width: 0px 2px 2px 2px
+    border-style: solid
+
+.demoPage
+  color: black
+  background-image: url("../assets/webbPattern.png")
+  background-repeat: repeat
+  height: 100%
+  width: 100vw
+  display: flex
+  align-items: center
+  justify-content: center
+
+  .sectionOne
+    display: flex
+    flex-direction: row
+    background-color: transparent
+    min-height: 20em //* these are for tech tab section
+    padding: 2em 2em 2em 2em
+    width: 100%
+    z-index: 2
+    .subjectImgContainer
+      border-radius: $borderRadius
+      flex: 1.5
+      display: flex
+      background-color: $lightPurple
+    .subjectInfoContainer
+      border-radius: $borderRadius
+      margin: 0em 3em 0em 3em
+      flex: 2
+      display: flex
+      background-color: $primaryPurple3
+      .content
+        flex: 1
+        border-radius: $borderRadius
+        background-color: $lightPurple
+        margin: 1em
+    .searchFeatureOuterContainerViewMode
+      @include searchFeatureOuterContainer(1em, 1em, 0em, 1em)
+      .searchResultSection
+        align-self: center
+        height: 100%
+        width: 17em
+        margin-bottom: 1em
+    .searchFeatureOuterContainerBriefMode
+      align-self: center
+      position: relative
+      @include searchFeatureOuterContainer(0, 0, 0, 0)
+      .searchResultSection
+        position: absolute
+        width: 17em
+        top: 2.7em
+        right: 0
+        left: 0
+        margin: auto
+        z-index: -1
+
+  .sectionTwoRelevance
+    // min-height: 25em //////////////////////////
+    background-color: $primaryPurple3
+    margin: 0em 1.5em 0em 1.5em
+    padding: 1.5em 0em 1.5em 0em
+    .card
+      margin: 1.5em 0em 1.5em 0em
+      height: 20em
+      width: 600px
+      display: flex
+      align-items: normal
+      .pictureFrame
+        flex: .8
+        background-color: #fff
+      .infoSection
+        flex: 1
+        background-color: $lightPurple
+    .verticalMargin
+      // margin: 5em
+
+  .projectTabHeader
+    margin: .5em .5em .5em 2.5em
