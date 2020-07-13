@@ -1,8 +1,13 @@
 import React from 'react'
 import smartPhoneFrame from '../assets/galaxys8Frame.png';
 import { Typography, Chip, Button, Paper, LinearProgress } from '@material-ui/core';
+// import { rootReducerT } from '../store';
+// import { useSelector } from 'react-redux';
 
 function ProjectsShowcase() {
+  // const projectData = useSelector((state: rootReducerT) => state.projectData)
+  // console.log('hey from projectsShowcase', projectData);
+
   return (
     <div className='row aligning projectSection'>
       <Project />

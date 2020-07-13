@@ -13,8 +13,13 @@ import gatsbyLogo from '../assets/techLogo/Gatsby_Monogram.svg';
 import github from '../assets/techLogo/github.png';
 import typescript from '../assets/techLogo/typescript.svg';
 import sassLogo from '../assets/techLogo/sassLogo.png';
+// import { useSelector } from 'react-redux';
+// import { rootReducerT } from '../store';
 
 function TechnologiesShowcase() {
+  // const techData = useSelector((state: rootReducerT) => state.techData)
+  // console.log('hey from technologiesShowcase', techData);
+  
   return (
     <div className='row aligning techSection'>
       <ul className='listOfTech leftTech'>

@@ -1,12 +1,15 @@
 import React from 'react'
-import { Grid, Paper, TextField } from '@material-ui/core'
+import { Grid, Paper } from '@material-ui/core'
 import '../styles/demoPgStyles.sass'
 import { Route, Switch } from 'react-router-dom';
 import ProjectsGallery from './demoTabs/ProjectsGallery';
 import Technologies from './demoTabs/Technologies';
+import useFetchAllPortfolioData from '../hooks/useFetchAllPortfolioData';
 // import reactNative from '../assets/techLogo/reactNativeLogo.png';
 
-export function DemoRoute() {
+export function DemoRoutes() {
+  useFetchAllPortfolioData()
+
   return (
     <Switch>
       <Route path="/demo/gallery">
@@ -38,12 +41,14 @@ export function DemoLayout({ sectionOne1, sectionOne2, sectionTwo }) {
             {sectionOne1}
           </div>
           <div className="subjectInfoContainer">
-            <Paper className="content">
+            <div className="content">
               {sectionOne2}
-            </Paper>
+            </div>
           </div>
 
-          <div className='searchFeatureOuterContainerViewMode column'>
+          <div
+            className={`${viewingContentDetails ? 'searchFeatureOuterContainerViewMode'
+              : 'searchFeatureOuterContainerBriefMode'} column`}>
             <div className="searchBarContainer row">
               <input type="text" name="name" />
             </div>

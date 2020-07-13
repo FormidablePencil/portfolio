@@ -8,11 +8,15 @@ import { ParallaxProvider } from 'react-scroll-parallax';
 import { BrowserRouter as Router, Switch, Route } from 'react-router-dom';
 import Navbar from './Navbar';
 import ExperPg from './pages/ExperPg';
-import { DemoRoute } from './pages/DemoSection';
+import { DemoRoutes } from './pages/DemoSection';
+import { Provider } from 'react-redux'
+import configureStore from './store';
 
 function App() {
+  const store = configureStore()
+
   return (
-    <div>
+    <Provider store={store}>
       <ParallaxProvider>
         <ThemeProvider theme={customTheme}>
           <Router>
@@ -22,7 +26,7 @@ function App() {
                 <LandingPage />
               </Route>
               {/* <Route path="/demo"> */}
-              <DemoRoute />
+              <DemoRoutes />
               {/* </Route> */}
               <Route path="/experimental">
                 <ExperPg />
@@ -31,7 +35,7 @@ function App() {
           </Router>
         </ThemeProvider>
       </ParallaxProvider>
-    </div>
+    </Provider>
   );
 }
 

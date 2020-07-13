@@ -5,8 +5,10 @@ import TechnologiesShowcase from '../landingPageComps/TechnologiesShowcase'
 import ProjectsShowcase from '../landingPageComps/ProjectsShowcase'
 import Footer from '../landingPageComps/Footer'
 import Brand from '../landingPageComps/Brand'
+import useFetchAllPortfolioData from '../hooks/useFetchAllPortfolioData'
 
 const LandingPage = () => {
+  useFetchAllPortfolioData()
 
   return (
     <div className='bgImage landingPage'>
