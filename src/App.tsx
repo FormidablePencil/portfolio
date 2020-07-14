@@ -3,7 +3,7 @@ import './App.css';
 import './styles/globalStyles.sass'
 import LandingPage from './pages/LandingPage';
 import { ThemeProvider } from '@material-ui/core';
-import customTheme from './styles/customTheme';
+import customTheme from './styles/materialUiStyles';
 import { ParallaxProvider } from 'react-scroll-parallax';
 import { BrowserRouter as Router, Switch, Route } from 'react-router-dom';
 import Navbar from './Navbar';

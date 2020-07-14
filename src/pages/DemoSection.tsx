@@ -5,6 +5,8 @@ import { Route, Switch } from 'react-router-dom';
 import ProjectsGallery from './demoTabs/ProjectsGallery';
 import Technologies from './demoTabs/Technologies';
 import useFetchAllPortfolioData from '../hooks/useFetchAllPortfolioData';
+import SubjectImageShowcase from './demoTabs/projectGallery/SubjectImageShowcase';
+import ExperPg from './ExperPg';
 // import reactNative from '../assets/techLogo/reactNativeLogo.png';
 
 export function DemoRoutes() {
@@ -18,17 +20,15 @@ export function DemoRoutes() {
       <Route path="/demo/tech">
         <Technologies />
       </Route>
+      <Route path="/experimental">
+        <ExperPg />
+      </Route>
+
     </Switch>
   )
 }
 
-// interface DemoLayoutT {
-//   sectionOne1: any
-//   sectionOne2: any
-//   sectionTwo: any
-// }
-
-export function DemoLayout({ sectionOne1, sectionOne2, sectionTwo }) {
+export function DemoLayout({ imageUrl, sectionOne, searchFeatureSection, sectionTwo }) {
   // const imageInWords = 'React-Native'
   const viewingContentDetails = true
 
@@ -37,12 +37,11 @@ export function DemoLayout({ sectionOne1, sectionOne2, sectionTwo }) {
       <Grid item container>
         <Paper className='sectionOne' elevation={10}>
           <div className="subjectImgContainer">
-            {/* <img src={reactNative} alt={imageInWords} /> */}
-            {sectionOne1}
+            <SubjectImageShowcase imageUrl={imageUrl} />
           </div>
           <div className="subjectInfoContainer">
             <div className="content">
-              {sectionOne2}
+              {sectionOne}
             </div>
           </div>
 
@@ -53,7 +52,7 @@ export function DemoLayout({ sectionOne1, sectionOne2, sectionTwo }) {
               <input type="text" name="name" />
             </div>
             <div className="searchResultSection">
-
+              {searchFeatureSection}
             </div>
           </div>
 

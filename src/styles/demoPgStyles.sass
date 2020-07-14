@@ -1,18 +1,5 @@
 @import "./globalStyles"
 
-// @mixin content
-//   flex: 1
-//   border-radius: $borderRadius
-//   background-color: $lightPurple
-//   margin: 1em
-
-  // @mixin avatar($size, $circle: false)
-  //   width: $size
-  //   height: $size
-
-  // @if $circle
-  //   border-radius: $size / 2
-
 @mixin searchFeatureOuterContainer($m1, $m2, $m3, $m4)
   flex: 1
   border-radius: $borderRadius
@@ -50,10 +37,52 @@
     width: 100%
     z-index: 2
     .subjectImgContainer
+      background-color: $primaryPurple3
+      padding: 1em
       border-radius: $borderRadius
       flex: 1.5
       display: flex
-      background-color: $lightPurple
+      width: 100%
+      height: 20em
+      .content
+        overflow: hidden
+        flex: 1
+        display: flex
+        background: $lightPurple
+        @extend %border
+        border-radius: $borderRadius
+        .arrowContainer
+          align-items: center
+          display: flex
+          flex: 1
+          justify-content: center
+        .imgMain
+          flex: 1
+          height: 100%
+          object-fit: contain
+        .scrollArea
+          background-color: #fff
+          .scrollableImageSelector
+            // height: 15em
+            width: 7em
+            // @extend %border
+            border-width: .05em
+            .moreimgsGalleryContainer
+              width: 7em
+              justify-content: center
+              display: flex
+              flex-wrap: wrap
+              background-color: grey
+              .item
+                // flex: 1
+                width: 3.2em
+                height: 6.6em
+                margin: .1em
+                img
+                  flex: 1
+                  width: 100%
+                  // object-fi1t: contain
+
     .subjectInfoContainer
       border-radius: $borderRadius
       margin: 0em 3em 0em 3em
@@ -85,6 +114,16 @@
         left: 0
         margin: auto
         z-index: -1
+    .accordionGeneralSection
+      .statusContainer
+        flex: 1
+        display: flex
+        align-items: center
+        justify-content: flex-end
+        .progressBar
+          margin-left: 1em
+      .accordionDetails
+        background: $lightPurple
 
   .sectionTwoRelevance
     // min-height: 25em //////////////////////////

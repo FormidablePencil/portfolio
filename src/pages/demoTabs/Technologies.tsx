@@ -1,17 +1,17 @@
 import React from 'react'
 import { DemoLayout, CardLayout } from '../DemoSection'
+// import { useSelector } from 'react-redux'
+// import { rootReducerT } from '../../store'
 
 function Technologies() {
+  // const techData = useSelector((state: rootReducerT) => state.techData)
+
+
   return (
     <DemoLayout
-      sectionOne1={
-        <>
-        </>
-      }
-      sectionOne2={
-        <>
-        </>
-      }
+      imageUrl={''}
+      sectionOne={''}
+      searchFeatureSection={<></>}
       sectionTwo={
         <>
           <CardLayout />
