@@ -5,8 +5,8 @@ import { Typography, Chip, Button, Paper, LinearProgress } from '@material-ui/co
 // import { useSelector } from 'react-redux';
 
 function ProjectsShowcase() {
-  // const projectData = useSelector((state: rootReducerT) => state.projectData)
-  // console.log('hey from projectsShowcase', projectData);
+  // const projectDataCollection = useSelector((state: rootReducerT) => state.projectDataCollection)
+  // console.log('hey from projectsShowcase', projectDataCollection);
 
   return (
     <div className='row aligning projectSection'>

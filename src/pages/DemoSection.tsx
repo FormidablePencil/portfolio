@@ -7,6 +7,8 @@ import Technologies from './demoTabs/Technologies';
 import useFetchAllPortfolioData from '../hooks/useFetchAllPortfolioData';
 import SubjectImageShowcase from './demoTabs/projectGallery/SubjectImageShowcase';
 import ExperPg from './ExperPg';
+import { projectDataT } from '../reducers/projectDataReducer';
+import { techDataT } from '../reducers/techDataReducer';
 // import reactNative from '../assets/techLogo/reactNativeLogo.png';
 
 export function DemoRoutes() {
@@ -28,7 +30,7 @@ export function DemoRoutes() {
   )
 }
 
-export function DemoLayout({ imageUrl, sectionOne, searchFeatureSection, sectionTwo }) {
+export function DemoLayout({ sectionOne, searchFeatureSection, sectionTwo }) {
   // const imageInWords = 'React-Native'
   const viewingContentDetails = true
 
@@ -37,7 +39,7 @@ export function DemoLayout({ imageUrl, sectionOne, searchFeatureSection, section
       <Grid item container>
         <Paper className='sectionOne' elevation={10}>
           <div className="subjectImgContainer">
-            <SubjectImageShowcase imageUrl={imageUrl} />
+            <SubjectImageShowcase />
           </div>
           <div className="subjectInfoContainer">
             <div className="content">
@@ -65,11 +67,18 @@ export function DemoLayout({ imageUrl, sectionOne, searchFeatureSection, section
   )
 }
 
-export const CardLayout = () => { // if 2 cards or less then column of 2 else greater then a column of 3
+interface CardLayoutT {
+  projectData: techDataT & projectDataT
+}
+
+export const CardLayout = ({ visualSection, infoSection, onCardClick }) => {
   return (
-    <Paper className="card row">
-      <div className="pictureFrame">asda</div>
-      <div className="infoSection">adds</div>
+    <Paper className="card row" id='hoverEffect' /*//* hover effect: zoom in and brightness higher */
+      onClick={() => onCardClick()}
+    >
+      <div className="pictureFrame">{visualSection}</div>
+      <div className="infoSection">{infoSection}</div>
+      <div className="absoluteLayer" id='hoverEffect' />
     </Paper>
   )
 }

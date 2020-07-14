@@ -6,13 +6,13 @@ import thunk from 'redux-thunk'
 import currentSubjectViewingReducer, { currentSubjectViewingT } from './reducers/currentSubjectViewingReducer'
 
 export interface rootReducerT {
-  projectData: projectDataT[],
-  techData: techDataT[],
+  projectDataCollection: projectDataT[],
+  techDataCollection: techDataT[],
   currentSubjectViewing: currentSubjectViewingT,
 }
 const rootReducer = combineReducers<rootReducerT>({
-  projectData: projectDataReducer,
-  techData: techDataReducer,
+  projectDataCollection: projectDataReducer,
+  techDataCollection: techDataReducer,
   currentSubjectViewing: currentSubjectViewingReducer,
 })
 

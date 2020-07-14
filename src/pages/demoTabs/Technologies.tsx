@@ -1,21 +1,23 @@
 import React from 'react'
 import { DemoLayout, CardLayout } from '../DemoSection'
-// import { useSelector } from 'react-redux'
-// import { rootReducerT } from '../../store'
+import { rootReducerT } from '../../store'
+import { useSelector } from 'react-redux'
 
 function Technologies() {
-  // const techData = useSelector((state: rootReducerT) => state.techData)
+  const techDataCollection = useSelector((state: rootReducerT) => state.techDataCollection)
 
 
   return (
     <DemoLayout
-      imageUrl={''}
       sectionOne={''}
       searchFeatureSection={<></>}
       sectionTwo={
         <>
-          <CardLayout />
-          <CardLayout />
+          {techDataCollection.map(project =>
+            <CardLayout
+              onCardClick={() => console.log('clicked on card from tech tab')}
+              visualSection={''} infoSection={<></>} />
+          )}
         </>
       }
     />

@@ -1,36 +1,38 @@
 import React, { useEffect, useState } from 'react'
 import { DemoLayout, CardLayout } from '../DemoSection'
-import { useSelector } from 'react-redux'
+import { useSelector, useDispatch } from 'react-redux'
 import { rootReducerT } from '../../store'
-import { AccordionSummary, Typography, AccordionDetails, Chip } from '@material-ui/core'
+import { AccordionSummary, Typography, AccordionDetails, Chip, Button } from '@material-ui/core'
 
 import { AiFillCaretLeft } from 'react-icons/ai'
-import { sortedProjectDataT } from '../../actions/types'
+import { sortedProjectDataT, SELECTED_SUBJECT } from '../../actions/types'
 import { BorderLinearProgress, AccordionCustom } from '../../styles/materialUiStyles'
 
 function ProjectsGallery() {
-  const { currentSubjectViewing, projectData } = useSelector((state: rootReducerT) => state)
-
+  const { currentSubjectViewing, projectDataCollection } = useSelector((state: rootReducerT) => state)
   const [sortedProjectData, setSortedProjectData] = useState<sortedProjectDataT>()
+  const dispatch = useDispatch()
 
   useEffect(() => {
-    if (typeof currentSubjectViewing === 'number' && projectData[currentSubjectViewing]) {
+    if (typeof currentSubjectViewing === 'number' && projectDataCollection[currentSubjectViewing]) {
       setSortedProjectData({
-        status: projectData[currentSubjectViewing].status,
+        status: projectDataCollection[currentSubjectViewing].status,
         general: {
-          title: projectData[currentSubjectViewing].title,
-          description: projectData[currentSubjectViewing].description,
-          type: projectData[currentSubjectViewing].type,
+          title: projectDataCollection[currentSubjectViewing].title,
+          description: projectDataCollection[currentSubjectViewing].description,
+          type: projectDataCollection[currentSubjectViewing].type,
         },
         links: {
-          frontend: projectData[currentSubjectViewing].gitRepo.frontend,
-          server: projectData[currentSubjectViewing].gitRepo.server,
-          relevant: projectData[currentSubjectViewing].relevant.webApp,
+          frontend: projectDataCollection[currentSubjectViewing].gitRepo.frontend,
+          server: projectDataCollection[currentSubjectViewing].gitRepo.server,
+          relevant: projectDataCollection[currentSubjectViewing].relevant.webApp,
         },
-        technologies: projectData[currentSubjectViewing].technologies,
+        technologies: projectDataCollection[currentSubjectViewing].technologies,
       })
     }
-  }, [currentSubjectViewing, projectData])
+  }, [currentSubjectViewing, projectDataCollection])
+
+  const onCardClick = (techIndexInCollection) => dispatch({ type: SELECTED_SUBJECT, payload: techIndexInCollection })
 
   const TextFormated = ({ title, content }) =>
     <>
@@ -64,9 +66,6 @@ function ProjectsGallery() {
   return (
     <DemoLayout
       // {/* <Typography className='projectTabHeader' variant='h4'>Projects</Typography> */}
-      imageUrl={typeof currentSubjectViewing === 'number' &&
-        projectData[currentSubjectViewing] ?
-        projectData[currentSubjectViewing].images[0] : null}
       sectionOne={
         <>
           <AccordionComponent
@@ -81,6 +80,7 @@ function ProjectsGallery() {
               </div>}
             detailsSection={
               <div className="column">
+                <TextFormated title='Title' content={sortedProjectData?.general.title} />
                 <TextFormated title='Description' content={sortedProjectData?.general.description} />
                 <TextFormated title='Platform' content={sortedProjectData?.general.type} />
               </div>} />
@@ -110,18 +110,37 @@ function ProjectsGallery() {
         </>
       }
       searchFeatureSection={ /* //* we're going to control the search input field from here */
-        <>
-        {/* {projectData.map(project => {
-          
-        })} */}
-        </>
+        <div className='column'>
+          {projectDataCollection.map((project, index) =>
+            <>
+              <Button className="searchResultBtn" onClick={() => console.log(project._id)}>{project.title}</Button>
+              <div className={`line ${index % 2 === 1 && 'oddLine'}`} />
+            </>
+          )}
+        </div>
       }
 
       sectionTwo={
         <>
-          <CardLayout />
-          <CardLayout />
-          <CardLayout />
+          {projectDataCollection.map((project, index) => /*//* this is rendering all projects not filtered through any category */
+            <CardLayout
+              onCardClick={(techIndexInCollection) => onCardClick(index)}
+              visualSection={
+                <>
+                  {project.images && project.images.map(uri =>
+                    <img src={uri} alt='' />
+                  )}s
+                </>
+              } infoSection={
+                <>
+                  <Typography variant='body1'>{project.title}</Typography>
+                  <Typography variant='body1'>{project.status}</Typography>
+                  {project.technologies.map(tech =>
+                    <Typography variant='body1'>{tech}</Typography>
+                  )}
+                </>
+              } />
+          )}
         </>
       }
     />

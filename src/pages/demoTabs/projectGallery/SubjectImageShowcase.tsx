@@ -2,13 +2,15 @@ import React from 'react'
 import { Button } from '@material-ui/core'
 import { FaChevronCircleLeft, FaChevronCircleRight } from 'react-icons/fa'
 import ScrollArea from 'react-scrollbar'
+import { useSelector } from 'react-redux'
+import { rootReducerT } from '../../../store'
 
-function SubjectImageShowcase({ imageUrl }) {
-  const arrOfImg = [
-    imageUrl, imageUrl, imageUrl, imageUrl,
-    imageUrl, imageUrl, imageUrl, imageUrl,
-    imageUrl, imageUrl, imageUrl,
-  ]
+function SubjectImageShowcase() {
+  const { projectDataCollection, currentSubjectViewing } = useSelector((state: rootReducerT) => state)
+
+  // imageUrl={typeof currentSubjectViewing === 'number' &&
+  // projectDataCollection[currentSubjectViewing] ?
+  // projectDataCollection[currentSubjectViewing].images[0] : null}
   return (
     <div className="content">
 
@@ -20,7 +22,10 @@ function SubjectImageShowcase({ imageUrl }) {
           <FaChevronCircleLeft size={30} />
         </Button>
       </div>
-      <img className='imgMain' src={imageUrl} alt='' />
+      <img className='imgMain'
+        src={typeof currentSubjectViewing === 'number' &&
+          projectDataCollection[currentSubjectViewing] ?
+          projectDataCollection[currentSubjectViewing].images[0] : '123'} alt='' />
       <div className="arrowContainer">
         <Button onClick={() => console.log('object')}>
           <FaChevronCircleRight size={30} />
@@ -36,15 +41,17 @@ function SubjectImageShowcase({ imageUrl }) {
       >
         <div className="scrollableImageSelector row">
           <div className="moreimgsGalleryContainer">
-            {arrOfImg.map((url, index) => {
-              let classname = 'mr'
-              if (index === arrOfImg.length - 1) classname = ''
-              return (
-                <div className="item" key={index}>
-                  <img className={classname} src={url} alt='app' />
-                </div>
-              )
-            })}
+            {typeof currentSubjectViewing === 'number' &&
+              projectDataCollection[currentSubjectViewing] &&
+              projectDataCollection[currentSubjectViewing].images.map((url, index) => {
+                let classname = 'mr'
+                if (index === projectDataCollection[currentSubjectViewing].images.length - 1) classname = ''
+                return (
+                  <div className="item" key={index}>
+                    <img className={classname} src={url} alt='app' />
+                  </div>
+                )
+              })}
           </div>
         </div>
       </ScrollArea>

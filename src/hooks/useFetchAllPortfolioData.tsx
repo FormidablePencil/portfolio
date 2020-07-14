@@ -5,11 +5,11 @@ import fetchAllProjectData from '../actions/fetchAllPortfolioData'
 
 function useFetchAllPortfolioData() {
   const dispatch = useDispatch()
-  const { projectData, techData } = useSelector((state: rootReducerT) => state)
+  const { projectDataCollection, techDataCollection } = useSelector((state: rootReducerT) => state)
 
   useEffect(() => {
-    if (!projectData.length && !techData.length) dispatch(fetchAllProjectData())
-  }, [dispatch, projectData, techData])
+    if (!projectDataCollection.length && !techDataCollection.length) dispatch(fetchAllProjectData())
+  }, [dispatch, projectDataCollection, techDataCollection])
 
 }
 

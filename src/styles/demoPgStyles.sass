@@ -114,6 +114,15 @@
         left: 0
         margin: auto
         z-index: -1
+
+    .line
+      width: 90%
+      &:not(:last-child)
+        background: $borderColor
+        height: .5px
+    .oddLine
+      width: 80%
+
     .accordionGeneralSection
       .statusContainer
         flex: 1
@@ -131,19 +140,32 @@
     margin: 0em 1.5em 0em 1.5em
     padding: 1.5em 0em 1.5em 0em
     .card
+      transition: transform 0.2s ease-in-out
+      position: relative
       margin: 1.5em 0em 1.5em 0em
       height: 20em
       width: 600px
       display: flex
       align-items: normal
+      border-radius: $borderRadius
+      overflow: hidden
       .pictureFrame
         flex: .8
         background-color: #fff
+        img
+          height: 10em
+          width: 4em
       .infoSection
         flex: 1
         background-color: $lightPurple
-    .verticalMargin
-      // margin: 5em
+      .absoluteLayer
+        position: absolute
+        height: 100%
+        width: 100%
+    #hoverEffect
+      &:hover
+        background-color: rgba(271,283,255,.1)
+        transform: scale(1.01) 
 
   .projectTabHeader
     margin: .5em .5em .5em 2.5em

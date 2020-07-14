@@ -16,6 +16,9 @@ export interface projectDataT {
   _id: number 
   images: {
     [index: number]: string
+    //fuction
+    map?: any
+    length?: any
   }
 }
 const initialState = []

@@ -17,8 +17,8 @@ import sassLogo from '../assets/techLogo/sassLogo.png';
 // import { rootReducerT } from '../store';
 
 function TechnologiesShowcase() {
-  // const techData = useSelector((state: rootReducerT) => state.techData)
-  // console.log('hey from technologiesShowcase', techData);
+  // const techDataCollection = useSelector((state: rootReducerT) => state.techDataCollection)
+  // console.log('hey from technologiesShowcase', techDataCollection);
   
   return (
     <div className='row aligning techSection'>
