@@ -3,8 +3,12 @@
   width: 100vw
 
 %hoverProperties
-  background-color: rgba(132,132,132,.4)
   cursor: pointer
+  transform: scale(1.2)
+  transition: transform .2s, height 4s
+.mouseAwayProps
+  transform: scale(1)
+  transition: transform .2s, height 4s
 
 .parallax
   @extend %parallaxDimensions
@@ -20,32 +24,89 @@
 
 .landingPage
 
+.firstSection, .landingSection, .BrandSection, .techSection, .projectSection
+  height: 100vh
+  // margin: 10
+
 .bgImage
-  background-image: url('../assets/bilal-o-2W0AZVlVm3U-unsplash2.jpg')
-  height: 300vh
+  background-image: url('../assets/croppedVerticallyFlowerPattern.jpg')
+  height: 100%
+  width: 100vw
+
+$parallax-perspective: 8
+$parallax-perspective-px: 8px
+$parallax-distance: 3
+$parallax-distance-px: 3px
+$parallax-scale: ($parallax-perspective - $parallax-distance) / $parallax-perspective
+.parallax-container
+  position: relative
+  width: 100vw
+  height: 100vh
+  overflow-x: hidden
+  overflow-y: scroll
+  perspective: $parallax-perspective-px
+  perspective-origin: 0%
+  display: flex
+  -webkit-overflow-scrolling: touch
+.parallax-bg-image
+  position: absolute
+  width: 100%
+  height: 100%
+  transform: translateZ(0px)
+  object-fit: cover
+.parallax-content
+  display: flex
+  margin-top: auto
+  margin-bottom: 50px
+  width: 100%
+  transform-origin: 0% 50%
+  transform: translateZ($parallax-distance-px) scale($parallax-scale)
+  // font-size: 12px
+  color: orange
+
+.firstSection
 
 .landingSection
   .imgFrame
-    height: 20em
-    width: 20em
-    background-color: white
-    border-radius: 240em
+    height: 35em
+    width: 25em
+    border-radius: 10em
+    overflow: hidden
+    display: flex
+    background: white
+    .img
+      width: 100%
+      object-fit: cover
+  .paragraphBox
+    margin: 2em 0em 2em 0em
+    color: white
+    width: 40em
+    border-radius: 1em
+    padding: 1em
+    background: rgba(255,255,255,.1)
 
 .BrandSection
   .paragraph
     width: 30em
 
 .techSection
-  .listOfTech
-    display: flex
-    flex-direction: column
-    li
+  height: 100vh
+  // .parallaxSection
+  .row1Parallax, .row2Parallax
+    width: 100px
+  .furthestToSideCol
+    // margin-top: -200px
+  .imgContainer
+    margin: 4em 0em 4em 0em
+    width: 100px
+    height: 100px
+    img
+      transition: transform .2s, height 4s
+      object-fit: contain
       width: 100px
+      height: 100px
       &:hover
         @extend %hoverProperties
-      img
-        object-fit: contain
-        width: 100px
   .rightTech
     align-items: flex-end
     li
@@ -59,19 +120,26 @@
         margin-left: 10em
 
   .midTech
-    li
+    width: 380px
+    display: flex
+    flex-direction: column
+    // li
+    .item
+      width: 380px
+      flex: 1
       &:hover
         @extend %hoverProperties
-      p
-        display: inline
-        color: #CCB7F9
-        font-size: 7em
-      p.firstLeter
-        color: white
+    p
+      display: inline
+      color: #CCB7F9
+      font-size: 7em
+    p.firstLeter
+      color: white
 
 .projectSection
+  margin: 10em 0em 10em 0em
   .frame
-    flex: 1
+    // flex: 1
     img
       object-fit: contain
   .macbook
@@ -86,11 +154,20 @@
     display: flex
     align-items: center
     justify-content: center
+    object-fit: contain
+    .smartphone
+      z-index: 2
+    .image
+      position: absolute
+      width: 200px
+      // height: 500px
+      object-fit: contain
+
   .detailsBox
     border-radius: .5em
-    margin: 1em
     padding: 1em 2em 1em 2em
     background-color: rgba(132,132,132,.3)
+    margin: 5em 0em 5em 0em
     .messageMarginRight
       margin: 0em 1em 0em 0em
   .justifyBtnRight
@@ -145,3 +222,11 @@
       width: 30em
       height: 15em
       background-color: grey
+
+.custom-class
+  height: 300vh
+  position: absolute
+
+.experImg
+  height: 300px
+  width: 300px

@@ -3,17 +3,20 @@ import projectDataReducer, { projectDataT } from './reducers/projectDataReducer'
 import techDataReducer, { techDataT } from './reducers/techDataReducer'
 import { createStore, combineReducers, applyMiddleware } from 'redux'
 import thunk from 'redux-thunk'
-import currentSubjectViewingReducer, { currentSubjectViewingT } from './reducers/currentSubjectViewingReducer'
+import currentSubjectViewingReducer, { currentlyViewingT } from './reducers/currentSubjectViewingReducer'
+import currentTechViewingReducer from './reducers/currentTechViewingReducer'
 
 export interface rootReducerT {
   projectDataCollection: projectDataT[],
   techDataCollection: techDataT[],
-  currentSubjectViewing: currentSubjectViewingT,
+  currentSubjectViewing: currentlyViewingT,
+  currentTechViewing: currentlyViewingT,
 }
 const rootReducer = combineReducers<rootReducerT>({
   projectDataCollection: projectDataReducer,
   techDataCollection: techDataReducer,
   currentSubjectViewing: currentSubjectViewingReducer,
+  currentTechViewing: currentTechViewingReducer,
 })
 
 const initialState = {}

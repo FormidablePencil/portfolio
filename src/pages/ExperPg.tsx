@@ -1,27 +1,17 @@
 import React from 'react'
 import '../styles/experStyles.sass';
-import { LinearProgress, withStyles, Theme, createStyles, Typography } from '@material-ui/core';
 
-// const BorderLinearProgress = withStyles((theme: Theme) =>
-//   createStyles({
-//     root: {
-//       height: 10,
-//       borderRadius: 5,
-//     },
-//     colorPrimary: {
-//       backgroundColor: theme.palette.grey[theme.palette.type === 'light' ? 200 : 700],
-//     },
-//     bar: {
-//       borderRadius: 5,
-//       backgroundColor: '#1a90ff',
-//     },
-//   }),
-// )(LinearProgress);
-
-function ExperPg() {
+const ExperPg = () => {
   return (
-    <div id="box">
-      {/* <BorderLinearProgress color='primary' variant="determinate" value={50} /> */}
+    <div className="parallax-container">
+      <div className="background">
+        <img src={require('../assets/croppedVerticallyFlowerPattern.jpg')} alt="" className="backrgoundImage" />
+      </div>
+      <div className="foreground">
+        <div className="foregroundContent">
+          parallaxing!!
+        </div>
+      </div>
     </div>
   )
 }

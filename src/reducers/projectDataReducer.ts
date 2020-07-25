@@ -9,11 +9,13 @@ export interface projectDataT {
   }
   relevant: {
     webApp: string
+    blog: string
   }
   status: number
-  technologies: [] 
+  technologies: []
   type: string
-  _id: number 
+  _id: number
+  showInPorfolio: boolean
   images: {
     [index: number]: string
     //fuction

@@ -3,6 +3,8 @@ import { FETCHED_ALL_TECH_DATA } from "../actions/types"
 export interface techDataT {
   technology: string
   description: string
+  _id: string
+  image: string
 }
 
 const initialState = []

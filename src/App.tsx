@@ -4,7 +4,6 @@ import './styles/globalStyles.sass'
 import LandingPage from './pages/LandingPage';
 import { ThemeProvider } from '@material-ui/core';
 import customTheme from './styles/materialUiStyles';
-import { ParallaxProvider } from 'react-scroll-parallax';
 import { BrowserRouter as Router, Switch, Route } from 'react-router-dom';
 import Navbar from './Navbar';
 import ExperPg from './pages/ExperPg';
@@ -17,26 +16,41 @@ function App() {
 
   return (
     <Provider store={store}>
-      <ParallaxProvider>
-        <ThemeProvider theme={customTheme}>
-          <Router>
-            <Navbar />
-            <Switch>
-              <Route path="/home">
-                <LandingPage />
-              </Route>
-              {/* <Route path="/demo"> */}
-              <DemoRoutes />
-              {/* </Route> */}
-              <Route path="/experimental">
-                <ExperPg />
-              </Route>
-            </Switch>
-          </Router>
-        </ThemeProvider>
-      </ParallaxProvider>
+      <ThemeProvider theme={customTheme}>
+        <Router>
+          <Navbar />
+          <Switch>
+            <Route path="/home">
+              <LandingPage />
+            </Route>
+            <DemoRoutes />
+            <Route path="/experimental">
+              <ExperPg />
+            </Route>
+          </Switch>
+        </Router>
+      </ThemeProvider>
     </Provider>
   );
 }
 
 export default App;
+
+
+//* supposed to be preformant way of using scroll
+// export function debounce(func, wait = 5, immediate = true) {
+//   let timeout;
+//   return function () {
+//     const context: any = this;
+//     const args = arguments;
+//     const later = function () {
+//       timeout = null;
+//       if (!immediate) func.apply(context, args);
+//     };
+//     const callNow = immediate && !timeout;
+//     clearTimeout(timeout);
+//     timeout = setTimeout(later, wait);
+//     if (callNow) func.apply(context, args);
+//   };
+// } // IDK WTF this is. Whatever
+//* =====

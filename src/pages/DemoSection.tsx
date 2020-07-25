@@ -1,14 +1,14 @@
-import React from 'react'
-import { Grid, Paper } from '@material-ui/core'
+import React, { useState } from 'react'
+import { Grid, Paper, Typography } from '@material-ui/core'
 import '../styles/demoPgStyles.sass'
 import { Route, Switch } from 'react-router-dom';
 import ProjectsGallery from './demoTabs/ProjectsGallery';
 import Technologies from './demoTabs/Technologies';
 import useFetchAllPortfolioData from '../hooks/useFetchAllPortfolioData';
-import SubjectImageShowcase from './demoTabs/projectGallery/SubjectImageShowcase';
 import ExperPg from './ExperPg';
 import { projectDataT } from '../reducers/projectDataReducer';
 import { techDataT } from '../reducers/techDataReducer';
+import { AiOutlineSetting, AiOutlineSearch } from 'react-icons/ai';
 // import reactNative from '../assets/techLogo/reactNativeLogo.png';
 
 export function DemoRoutes() {
@@ -30,16 +30,19 @@ export function DemoRoutes() {
   )
 }
 
-export function DemoLayout({ sectionOne, searchFeatureSection, sectionTwo }) {
+export function DemoLayout({ imageSection, sectionOne, searchFeatureSection, sectionTwo }) {
   // const imageInWords = 'React-Native'
   const viewingContentDetails = true
+  const [selectedTab, setSelectedTab] = useState(0)
+
+  const onClickTab = (tab) => setSelectedTab(tab)
 
   return (
     <Grid container className='demoPage'>
       <Grid item container>
         <Paper className='sectionOne' elevation={10}>
           <div className="subjectImgContainer">
-            <SubjectImageShowcase />
+            {imageSection}
           </div>
           <div className="subjectInfoContainer">
             <div className="content">
@@ -50,6 +53,16 @@ export function DemoLayout({ sectionOne, searchFeatureSection, sectionTwo }) {
           <div
             className={`${viewingContentDetails ? 'searchFeatureOuterContainerViewMode'
               : 'searchFeatureOuterContainerBriefMode'} column`}>
+            <div className="tabsContainer row">
+              <div onClick={() => onClickTab(0)} className={`tab ${selectedTab !== 0 && 'unselectedTab'}`}>
+                <Typography>Search</Typography>
+              <div><AiOutlineSearch size={15} /></div>
+              </div>
+              <div onClick={() => onClickTab(1)} className={`tab ${selectedTab !== 1 && 'unselectedTab'} filter`}>
+                <Typography>filter</Typography>
+                <div><AiOutlineSetting size={15} /></div>
+              </div>
+            </div>
             <div className="searchBarContainer row">
               <input type="text" name="name" />
             </div>
@@ -76,7 +89,7 @@ export const CardLayout = ({ visualSection, infoSection, onCardClick }) => {
     <Paper className="card row" id='hoverEffect' /*//* hover effect: zoom in and brightness higher */
       onClick={() => onCardClick()}
     >
-      <div className="pictureFrame">{visualSection}</div>
+      <div className="pictureFrameSection">{visualSection}</div>
       <div className="infoSection">{infoSection}</div>
       <div className="absoluteLayer" id='hoverEffect' />
     </Paper>

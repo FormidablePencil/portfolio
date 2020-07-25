@@ -15,6 +15,7 @@ export interface sortedProjectDataT {
     frontend: string
     server: string
     relevant: {}
+    blog: string
   },
   technologies: []
 }
