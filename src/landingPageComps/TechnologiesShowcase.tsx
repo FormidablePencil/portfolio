@@ -1,4 +1,4 @@
-import React from 'react'
+import React, { useState, useEffect } from 'react'
 // import jsLogo from '../assets/techLogo/hiclipart.com.png'
 // import htmlLogo from '../assets/techLogo/htmlLogo.png'
 // import cssLogo from '../assets/techLogo/cssLogo.png'
@@ -14,8 +14,9 @@ import React from 'react'
 // import typescript from '../assets/techLogo/typescript.svg';
 // import sassLogo from '../assets/techLogo/sassLogo.png';
 import '../styles/parallax.sass';
-import { animated } from "react-spring";
-import { Trail } from 'react-spring/renderprops';
+import { animated, useTransition, useTrail, useSprings } from "react-spring";
+import { Spring, config, Transition } from 'react-spring/renderprops';
+import { Button } from '@material-ui/core';
 
 // import { useSelector } from 'react-redux';
 // import { rootReducerT } from '../store';
@@ -23,7 +24,7 @@ import { Trail } from 'react-spring/renderprops';
 //Todo ~ bg must be blured
 //Todo ~ upon hovering the MERN section have the tech show up behind the text with low opacity
 
-function TechnologiesShowcase({showElement}) {
+function TechnologiesShowcase({ showElement, showElementOpacity, stackTranstionRef }) {
 
   const imageUri = [
     {
@@ -57,42 +58,17 @@ function TechnologiesShowcase({showElement}) {
       key: 2
     }
   ]
-  const configTrailInnerCol = { tension: 80, friction: 14, }
-  const configTrailOuterCol = { tension: 80, friction: 14, }
+  // const configTrailOuterCol = { tension: 80, friction: 14, }
 
   return (
     <>
-      <div className='row aligning techSection'>
-        <div className='row1Parallax'>
-          <Trail
-            items={imageUri}
-            keys={item => item.key}
-            delay={500}
-            config={configTrailOuterCol}
-            to={showElement ? { transform: 'translateX(-200px)' } : { transform: 'translateX(0px)' }}
-          >
-            {item => props =>
-              <animated.div className='imgContainer' style={props}>
-                <img src={item.src} alt='js' />
-              </animated.div>
-            }
-          </Trail>
+      <div className='row techSection'>
+        <div className='row1Parallax leftCol'>
+          <TrailTech leftDirection={false} delay={1000} showElementOpacity={showElementOpacity} imageUri={imageUri} />
         </div>
-        <div className='row2Parallax furthestToSideCol'>
-          <Trail
-            config={configTrailInnerCol}
-            items={imageUri2}
-            keys={item => item.key}
-            to={showElement ? { transform: 'translateX(-500px)' } : { transform: 'translateX(0px)' }}
-          >
-            {item => props =>
-              <animated.div className='imgContainer' style={props}>
-                <img src={item.src} alt='js' />
-              </animated.div>
-            }
-          </Trail>
+        <div className='row2Parallax furthestToSideCol leftCol'>
+          <TrailTech leftDirection={false} delay={1300} showElementOpacity={showElementOpacity} imageUri={imageUri2} />
         </div>
-
         <div className='midTech'>
           <div className='item mouseAwayProps'>
             <p className='firstLeter'>M</p><p>ongo</p>
@@ -107,39 +83,52 @@ function TechnologiesShowcase({showElement}) {
             <p className='firstLeter'>N</p><p>ode</p>
           </div>
         </div>
-        <div className='row1Parallax furthestToSideCol'>
-          <Trail
-            items={imageUri2}
-            keys={item => item.key}
-            to={showElement ? { transform: 'translateX(500px)' } : { transform: 'translateX(0px)' }}
-            config={configTrailInnerCol}
-          >
-            {item => props =>
-              <animated.div className='imgContainer' style={props}>
-                <img src={item.src} alt='js' />
-              </animated.div>
-            }
-          </Trail>
+        <div className='row1Parallax furthestToSideCol rightCol'>
+          <TrailTech leftDirection={true} delay={1300} showElementOpacity={showElementOpacity} imageUri={imageUri2} />
         </div>
-        <div className='row2Parallax'>
-          <Trail
-            delay={500}
-            config={configTrailOuterCol}
-            items={imageUri}
-            keys={item => item.key}
-            to={showElement ? { transform: 'translateX(200px)' } : { transform: 'translateX(0px)' }}
-          >
-            {item => props =>
-              <div className='imgContainer' style={props}>
-                <img src={item.src} alt='js' />
-              </div>
-            }
-          </Trail>
+        <div className='row2Parallax rightCol'>
+          <TrailTech leftDirection={true} delay={1000} showElementOpacity={showElementOpacity} imageUri={imageUri} />
         </div>
       </div>
     </>
   )
 }
 
-
 export default TechnologiesShowcase
+
+
+const TrailTech = ({ showElementOpacity, imageUri, delay, leftDirection }) => {
+  //delay, direction and translatePx
+
+  const [toggle, setToggle] = useState(false)
+  const trail = useTrail(imageUri.length, toggle ?
+    { opacity: 1, transform: `translateX(${leftDirection && '-'}100px)`, config: config.stiff, }
+    : { opacity: 0, transform: 'translateX(0px)', config: config.stiff })
+
+
+  useEffect(() => {
+    if (showElementOpacity) {
+      setTimeout(() => {
+        setToggle(true)
+      }, delay)
+    } else if (!showElementOpacity) {
+      setTimeout(() => {
+        setToggle(false)
+      }, delay - 2000)
+    }
+  }, [showElementOpacity])
+
+  return (
+    <>
+      {trail.map((props, index) =>
+        <animated.div
+          key={imageUri[index].key}
+          style={props}
+          className='imgContainer'>
+          <img
+            src={imageUri[index].src} alt='js' />
+        </animated.div>
+      )}
+    </>
+  )
+}

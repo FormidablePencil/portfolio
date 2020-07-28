@@ -18,9 +18,9 @@ function App() {
     <Provider store={store}>
       <ThemeProvider theme={customTheme}>
         <Router>
-          <Navbar />
+          {/* <Navbar /> */}
           <Switch>
-            <Route path="/home">
+            <Route exact path="/">
               <LandingPage />
             </Route>
             <DemoRoutes />

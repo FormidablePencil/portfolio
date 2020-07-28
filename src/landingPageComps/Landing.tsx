@@ -6,7 +6,7 @@ function Landing() {
   return (
     <div className='row aligning landingSection'>
       <div>
-        <Typography variant='h1' className='textPrimary'>Dennis Aleksandrov</Typography>
+        <p className='large-name'>Dennis Aleksandrov</p>
         <div className="paragraphBox">
           <Typography variant='body1' className=''>
             Lorem ipsum dolor sit, amet consectetur adipisicing elit. Explicabo ut eaque nisi porro velit, similique dicta nobis deserunt atque provident saepe, consequuntur soluta cum. Veritatis assumenda ullam possimus quidem harum?

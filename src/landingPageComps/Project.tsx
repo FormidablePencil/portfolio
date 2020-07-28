@@ -13,22 +13,22 @@ const Project = () => {
 
       <Paper className='detailsBox' elevation={1}>
         <div className="column">
-          <Typography variant='body1' className='messageMarginRight'> similique ratione totam beatae. Aliquid eligendi sapiente illum voluptates culpa nulla maiores ab ipsam aspernatur dolor expedita id, mollitia excepturi sint.</Typography>
+          <p className='messageMarginRight bodyTxt'> similique ratione totam beatae. Aliquid eligendi sapiente illum voluptates culpa nulla maiores ab ipsam aspernatur dolor expedita id, mollitia excepturi sint.</p>
           <div className='moreSection'>
             <div className="techContainer">
-              <Typography variant='h5' gutterBottom>Technologies:</Typography>
+              {/* <Typography variant='h5' gutterBottom>Technologies:</Typography> */}
+              {/* <Chip label="Basic" color='primary' className='chipMargin' />
               <Chip label="Basic" color='primary' className='chipMargin' />
               <Chip label="Basic" color='primary' className='chipMargin' />
               <Chip label="Basic" color='primary' className='chipMargin' />
               <Chip label="Basic" color='primary' className='chipMargin' />
               <Chip label="Basic" color='primary' className='chipMargin' />
-              <Chip label="Basic" color='primary' className='chipMargin' />
-              <Chip label="Basic" color='primary' className='chipMargin' />
-              <Chip label="Basic" color='primary' className='chipMargin' />
+              <Chip label="Basic" color='primary' className='chipMargin' /> */}
+              {/* <Chip label="Basic" color='primary' className='chipMargin' /> */}
             </div>
             <div className="progressContainer">
-              <Typography variant='h5' gutterBottom>Progress:</Typography>
-              <LinearProgress variant="determinate" value={50} />
+              {/* <Typography variant='h5' gutterBottom>Progress:</Typography> */}
+              {/* <LinearProgress variant="determinate" value={50} /> */}
               <Button variant='contained' color="secondary" className='btnGoToDetailedPg'>detailed</Button>
             </div>
           </div>

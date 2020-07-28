@@ -36,7 +36,7 @@ function Navbar() {
             </div>
           }
           <div className="navLinks">
-            <Link className='link' variant="h6" href='/home'>Home</Link>
+            <Link className='link' variant="h6" href='/'>Home</Link>
             <Link className='link' variant="h6" href='/demo/gallery'>Demo</Link>
             <Link className='link' variant="h6" href='/experimental'>experimental</Link>
           </div>

@@ -1,9 +1,17 @@
+@font-face
+  font-family: 'KaushanScript-Regular'
+  src: local('KaushanScript-Regular'), url('../assets/fonts/KaushanScript-Regular.ttf') format('truetype')
+
+@font-face
+  font-family: 'JosefinSans-Medium'
+  src: local('JosefinSans-Medium'), url('../assets/fonts/JosefinSans-Medium.ttf') format('truetype')
+
 $primaryPurple1: #A79AD9
 $primaryPurple2: rgba(167, 154, 217, 0.86)
 $primaryPurple3: #D1CBF6
 $primaryPurple4: #8576BD
 $primaryPurple5: #5D3F83
-$textPrimaryPurple: #CCB7F9
+$textPrimary: #986C7F
 $lightPurple: #F7F1FF
 $primaryTextColor: #340373
 $secondary: #44A5FF
@@ -14,6 +22,18 @@ $navbarColor: $primaryPurple5
 
 .textPrimary
   color: #CCB7F9
+.bodyTxt
+  color: white
+  font-family: JosefinSans-Medium, sans-serif
+.largeText
+  @extend .bodyTxt
+  font-size: 2.5em
+  text-align: center
+  line-height: 1.1em
+.large-name
+  font-size: 6em
+  font-family: KaushanScript-Regular
+  color: white
 
 ul
   list-style-type: none

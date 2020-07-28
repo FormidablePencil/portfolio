@@ -1,3 +1,7 @@
+@import './globalStyles'
+
+$bgColor1: rgba(107,73,91,.9)
+
 %parallaxDimensions
   height: 5000px
   width: 100vw
@@ -22,55 +26,87 @@
   width: 100%
   background-color: #0D0819
 
-.landingPage
+.introSection, .landingSection, .BrandSection, .techSection, .projectSection
 
-.firstSection, .landingSection, .BrandSection, .techSection, .projectSection
-  height: 100vh
+  // height: 100vh
   // margin: 10
+.introSection
+  padding-top: 33vh
+  // height: 100vh
+  // padding-top: 33vh
+  width: 100vw
+  display: flex
+  align-items: center
+  .banner
+    width: 100%
+    height: 22em
+    display: flex
+    align-items: center
+    justify-content: center
+    background: $bgColor1
+    .textContainer
+      width: 50em
 
 .bgImage
-  background-image: url('../assets/croppedVerticallyFlowerPattern.jpg')
-  height: 100%
-  width: 100vw
+  background-image: url('../assets/flowerPatternEditted.jpg')
+  background-attachment: fixed
+  background-size: 100vw
+
+.landingPage
+  position: absolute
+  height: 30vh
+  // overflow: hidden
 
 $parallax-perspective: 8
 $parallax-perspective-px: 8px
 $parallax-distance: 3
 $parallax-distance-px: 3px
 $parallax-scale: ($parallax-perspective - $parallax-distance) / $parallax-perspective
-.parallax-container
+$bg-parallax-scale: 3.5 //! this will need to change responsively for bg parallax to cover smaller screen sizes
+.parallax-container //* too taxing to make a parallax effect with css
   position: relative
   width: 100vw
   height: 100vh
   overflow-x: hidden
   overflow-y: scroll
   perspective: $parallax-perspective-px
-  perspective-origin: 0%
+  perspective-origin: 0% 0%
   display: flex
-  -webkit-overflow-scrolling: touch
+  // overflow-y: hidden
+  // -webkit-overflow-scrolling: touch
 .parallax-bg-image
+  // height: 100px
   position: absolute
-  width: 100%
-  height: 100%
-  transform: translateZ(0px)
-  object-fit: cover
+  transform-origin: 0% 0%
+  transform: translateZ(0px) scale(1)
+  img
+    margin: 0em 0em 0em 0em
+    width: 160% //! this is the thing that changes must be set up to responsively change
+    object-fit: contain
 .parallax-content
+  overflow-y: hidden
   display: flex
-  margin-top: auto
-  margin-bottom: 50px
+  flex-direction: column
   width: 100%
-  transform-origin: 0% 50%
+  height: 270vh
+  transform-origin: 0% 0%
   transform: translateZ($parallax-distance-px) scale($parallax-scale)
+  // height: 100vh
   // font-size: 12px
-  color: orange
 
 .firstSection
 
 .landingSection
+  position: absolute
+  transform-origin: 0% 0%
+  transform: translateZ($parallax-distance-px) scale($parallax-scale)
+  bottom: -80em
+  width: 100vw
+  height: 100vh
   .imgFrame
     height: 35em
     width: 25em
-    border-radius: 10em
+    border-radius: 2em
     overflow: hidden
     display: flex
     background: white
@@ -83,17 +119,28 @@ $parallax-scale: ($parallax-perspective - $parallax-distance) / $parallax-perspe
     width: 40em
     border-radius: 1em
     padding: 1em
-    background: rgba(255,255,255,.1)
+    background: $bgColor1
 
 .BrandSection
   .paragraph
     width: 30em
 
 .techSection
-  height: 100vh
+  // position: absolute
+  height: 70vh
+  display: flex
+  width: 100%
+  align-items: center
   // .parallaxSection
   .row1Parallax, .row2Parallax
+    display: flex
+    flex: 1
     width: 100px
+    flex-direction: column
+  .leftCol
+    align-items: flex-start
+  .rightCol
+    align-items: flex-end
   .furthestToSideCol
     // margin-top: -200px
   .imgContainer
@@ -120,10 +167,12 @@ $parallax-scale: ($parallax-perspective - $parallax-distance) / $parallax-perspe
         margin-left: 10em
 
   .midTech
-    width: 380px
+    flex: 1
+    width: 100%
+    margin: 0em 3em 0em 6em
     display: flex
     flex-direction: column
-    // li
+    font-family: KaushanScript-Regular, sans-serif, Verdana
     .item
       width: 380px
       flex: 1
@@ -131,13 +180,18 @@ $parallax-scale: ($parallax-perspective - $parallax-distance) / $parallax-perspe
         @extend %hoverProperties
     p
       display: inline
-      color: #CCB7F9
+      color: $textPrimary
       font-size: 7em
     p.firstLeter
       color: white
 
 .projectSection
-  margin: 10em 0em 10em 0em
+  top: 50em
+  position: absolute
+  // margin: 10em 0em 10em 0em
+  transform-origin: 0% 0%
+  transform: translateZ($parallax-distance-px) scale($parallax-scale)
+  height: 150vh
   .frame
     // flex: 1
     img
@@ -148,6 +202,9 @@ $parallax-scale: ($parallax-perspective - $parallax-distance) / $parallax-perspe
     width: 30em
 
 .projectSection
+  // display: flex
+  // align-items: center
+  // justify-content: center
   .container
     width: 40em
   .frame
@@ -164,10 +221,11 @@ $parallax-scale: ($parallax-perspective - $parallax-distance) / $parallax-perspe
       object-fit: contain
 
   .detailsBox
-    border-radius: .5em
-    padding: 1em 2em 1em 2em
-    background-color: rgba(132,132,132,.3)
-    margin: 5em 0em 5em 0em
+    width: 30em
+    border-radius: .3em
+    padding: 1em
+    background: $bgColor1
+    margin: 1em auto 1em auto
     .messageMarginRight
       margin: 0em 1em 0em 0em
   .justifyBtnRight
@@ -175,7 +233,7 @@ $parallax-scale: ($parallax-perspective - $parallax-distance) / $parallax-perspe
     justify-content: flex-end
   .moreSection
     width: 100%
-    min-height: 6.5em
+    min-height: 3em
     display: flex
     flex-direction: row
     .progressContainer
@@ -189,6 +247,9 @@ $parallax-scale: ($parallax-perspective - $parallax-distance) / $parallax-perspe
       flex: 1
       .chipMargin
         margin: .2em
+
+.landingSection
+  height: 50vh
 
 .footer
   background-color: #29005C
@@ -230,3 +291,28 @@ $parallax-scale: ($parallax-perspective - $parallax-distance) / $parallax-perspe
 .experImg
   height: 300px
   width: 300px
+
+.roses-container
+  display: flex
+  justify-content: center
+  margin: 100px 0px 100px 0px
+
+.roseImg
+  width: 200px
+  height: 200px
+  object-fit: contain
+
+.rose1
+  margin-top: 200px
+  transform: rotate(200deg)
+.rose2
+  margin-left: 50px
+  margin-top: 200px
+  transform: rotate(150deg)
+.rose3
+  margin-left: 50px
+  margin-top: 100px
+  transform: rotate(100deg)
+.rose4
+  margin-left: 50px
+  transform: rotate(150deg)

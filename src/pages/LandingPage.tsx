@@ -1,87 +1,115 @@
-import React, { useState, useEffect, useRef } from 'react'
+import React, { useState, useRef, useEffect } from 'react'
 import '../styles/landingPageStyles.sass'
 import Landing from '../landingPageComps/Landing'
 import TechnologiesShowcase from '../landingPageComps/TechnologiesShowcase'
 import ProjectsShowcase from '../landingPageComps/ProjectsShowcase'
 import Footer from '../landingPageComps/Footer'
-// import Brand from '../landingPageComps/Brand'
 import useFetchAllPortfolioData from '../hooks/useFetchAllPortfolioData'
 import '../styles/parallax.sass';
 import { Typography } from '@material-ui/core'
-import { animated, useSpring } from 'react-spring'
-import Particles from 'react-particles-js';
-import useScrollInfo from 'react-element-scroll-hook';
-
-//* We've made the parallax effect with springs opposed to Parallax api
-//* now to replace Parallax with spring parallax
+import { useSpring, useChain, animated, config } from 'react-spring'
+import { isFirefox } from "react-device-detect";
+import RosesDecor from '../landingPageComps/RosesDecor'
 
 const LandingPage = () => {
-  useFetchAllPortfolioData()
+  const [showElement] = useState(false)
+  const [showElementOpacity, setShowElementOpacity] = useState(false)
 
-  const [showElement, setShowElement] = useState(false)
+  useFetchAllPortfolioData()
   // eslint-disable-next-line
   const [{ offset }, set] = useSpring(() => ({ offset: 0 }));
 
-  const bgParallax = () => offset.interpolate({
-    range: [0, 1],
-    output: [0, 100]
-  }).interpolate(x => `backgroundPosition: ${x}%, ${x}%`)
-
-  const handleScrollAndAnimations = () => {
-    // const posY = ref.current.getBoundingClientRect().bottom;
-    const offsetValue = window.pageYOffset;
-    set({ offset: offsetValue });
-    console.log(offsetValue);
-    if (offsetValue > 800 && offsetValue < 1200) {
-      if (showElement) setShowElement(false)
-    } else {
-      if (!showElement) setShowElement(true)
-    }
-  };
-  useEffect(() => {
-    window.addEventListener("scroll", handleScrollAndAnimations);
-    return () => {
-      window.removeEventListener("scroll", handleScrollAndAnimations);
-    };
-  });
-
   const trackScroll = useRef(null)
-  // if (trackScroll.current) console.log(trackScroll.current.getBoundingClientRect());
+  const onScroll = () => {
+    let offsetValue
+    if (isFirefox) offsetValue = window.pageYOffset
+    else offsetValue = trackScroll.current.scrollTop
+    // console.log(offsetValue);
+    /* */if (offsetValue > 50) setShowElementOpacity(true)
+    else if (offsetValue < 50) setShowElementOpacity(false)
+    // else setShowElement(false)
+  }
+
   useEffect(() => {
-    setInterval(() => {
-      if (trackScroll.current) console.log(trackScroll.current.getBoundingClientRect());
-    }, 1500)
+    if (!isFirefox) return
+    window.addEventListener('scroll', () => onScroll())
+    return () => window.removeEventListener('scroll', () => onScroll())
+    // eslint-disable-next-line
   }, [])
 
+  const stackTranstionRef = useRef()
+
+  const springRef = useRef()
+  const props = useSpring({
+    ref: springRef,
+    from: { opacity: 1 },
+    to: showElementOpacity ? { opacity: 0 } : { opacity: 1 },
+  })
+  const springRef2 = useRef()
+  const props2 = useSpring({
+    ref: springRef2,
+    from: { opacity: 0 },
+    to: showElementOpacity ?
+      { opacity: 1, } : { opacity: 0 },
+    config: showElementOpacity ? { tension: 50, friction: 20, mass: 15 } : config.gentle,
+
+  })
+  const springRefBlur = useRef()
+  // const blurSpring = useSpring({ //* try to add this blur out effect at the last section where my image is at
+  //   ref: springRefBlur,
+  //   from: { filter: 'blur(0px)' },
+  //   to: showElementOpacity ? { filter: 'blur(3px)' } : { filter: 'blur(0px)' },
+  // })
+
+  useChain(!showElementOpacity ? [springRef, stackTranstionRef, springRefBlur, springRef2] : [springRef, stackTranstionRef, springRef2, springRefBlur], [0, 3])
 
   return (
-    <div className="landingPage parallax-container">
-      <div ref={trackScroll} className='parallax-bg-image'>
-        <img
-          className=''
-          src={require('../assets/croppedVerticallyFlowerPattern.jpg')}
-          alt='' />
+    <div ref={trackScroll} onScroll={onScroll} className={`landingPage ${isFirefox ? 'bgImage' : 'parallax-container'}`}>
+      {!isFirefox &&
+        <div className='parallax-bg-image'>
+          <img src={require('../assets/flowerPatternBlurred.jpg')} alt='' />
+        </div>
+      }
+      <div className={!isFirefox && 'parallax-content'}>
+        <div>
+          <animated.div style={props}>
+            <Intro />
+          </animated.div>
+          <animated.div style={props2}>
+            <TechnologiesShowcase
+              stackTranstionRef={stackTranstionRef}
+              showElementOpacity={showElementOpacity}
+              showElement={showElement} />
+          </animated.div>
+          {/* <Footer /> */}
+        </div>
       </div>
-      <div className='parallax-content'>
-        {/* <Particles /> */}
-        {/* <img className="bgImg" src={bgImg} alt='background' /> */}
-        {/* <Brand /> */}
-        {/* <FirstSection /> */}
-        <TechnologiesShowcase showElement={showElement} />
-        {/* <ProjectsShowcase /> */}
-        {/* <Landing /> */}
-        {/* <Footer /> */}
-      </div>
-    </div>
+      <ProjectsShowcase />
+      <Landing />
+    </div >
   )
 }
 
 export default LandingPage
 
-const FirstSection = () => {
+const Intro = () => {
   return (
-    <div className='firstSection'>
-      <Typography variant='body1' className='textPrimary'>Intro section that sets a setting and shows the user it's a portfolio. So maybe some art here with animations.</Typography>
+    <div className='introSection'>
+      <div className="banner">
+        <div className="textContainer">
+          <p className='largeText'>
+            <p>
+              Hi, I’m a self taught programmer.
+            </p>
+            <p>
+              I specialize in the MERN stack.
+            </p>
+            <p>
+              It’ll be my pleasure doing business with you.
+            </p>
+          </p>
+        </div>
+      </div>
     </div>
   )
 }
