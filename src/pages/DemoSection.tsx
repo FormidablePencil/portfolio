@@ -1,6 +1,5 @@
 import React, { useState } from 'react'
 import { Grid, Paper, Typography } from '@material-ui/core'
-import '../styles/demoPgStyles.sass'
 import { Route, Switch } from 'react-router-dom';
 import ProjectsGallery from './demoTabs/ProjectsGallery';
 import Technologies from './demoTabs/Technologies';

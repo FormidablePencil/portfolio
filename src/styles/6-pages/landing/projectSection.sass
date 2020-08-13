@@ -1,0 +1,43 @@
+.project-section
+  display: flex
+  flex-direction: column
+  align-items: center
+  justify-content: center
+  .navBtnsContainer
+    display: flex
+    flex-direction: row
+    button
+      margin: 0 1em 5em 1em
+  .project-content
+    display: flex
+    width: 100%
+    flex-direction: row
+    align-items: flex-end
+    justify-content: space-evenly
+    .container
+      display: flex
+      align-items: center
+      position: relative
+      .frame
+        display: flex
+        align-items: center
+        justify-content: center
+        position: relative
+        .desktopFrame
+          width: 600px
+          z-index: 1
+        .desktopImage
+          z-index: 0
+          position: absolute
+          width: 450px
+          object-fit: contain
+        .smartphoneFrame
+          width: 350px
+          z-index: 1
+        .smartphoneImage
+          z-index: 0
+          position: absolute
+          width: 145px
+          object-fit: contain
+  .btnGoToDetailedPg
+    margin: 5em 0 0 0

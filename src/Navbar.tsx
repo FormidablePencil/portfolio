@@ -1,8 +1,6 @@
 import React from 'react'
 import { AppBar, Link, Typography } from '@material-ui/core'
 import { useLocation } from 'react-router-dom';
-import './styles/navbarStyles.sass'
-
 //Motivations behind this project. Appeal to other deveopers.
 
 function Navbar() {

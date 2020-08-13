@@ -1,0 +1,269 @@
+@mixin searchFeatureOuterContainer($m1, $m2, $m3, $m4)
+  flex: 1
+  border-radius: $borderRadius
+  background-color: $primaryPurple3
+  .searchBarContainer
+    input
+      @extend %border
+      margin: $m1 $m2 $m3 $m4
+      flex: 1
+      width: 100%
+      color: $primaryTextColor
+      height: 3em
+      border-radius: $borderRadius
+  .searchResultSection
+    @extend %border
+    background: $lightPurple
+    border-width: 0px 2px 2px 2px
+
+.demoPage
+  color: black
+  background-image: url("../../assets/webbPattern.png")
+  background-repeat: repeat
+  height: 100%
+  width: 100vw
+  display: flex
+  align-items: center
+  justify-content: center
+
+  .sectionOne
+    display: flex
+    flex-direction: row
+    background-color: transparent
+    min-height: 20em //* these are for tech tab section
+    padding: 2em 2em 2em 2em
+    width: 100%
+    z-index: 2
+    .subjectImgContainer
+      background-color: $primaryPurple3
+      padding: 1em
+      border-radius: $borderRadius
+      flex: 1.5
+      display: flex
+      width: 10px
+      height: 20em
+      .content
+        overflow: hidden
+        flex: 1
+        display: flex
+        background: white
+        @extend %border
+        border-radius: $borderRadius
+        .arrowContainer
+          align-items: center
+          display: flex
+          flex: 1
+          justify-content: center
+        .imgMain
+          flex: 1
+          height: 100%
+          object-fit: contain
+        .scrollArea
+          background-color: #fff
+          .scrollableImageSelector
+            // height: 15em
+            width: 7em
+            // @extend %border
+            border-width: .05em
+            .moreimgsGalleryContainer
+              width: 7em
+              justify-content: center
+              display: flex
+              flex-wrap: wrap
+              background-color: grey
+              .item
+                // flex: 1
+                width: 3.2em
+                height: 6.6em
+                margin: .1em
+                img
+                  flex: 1
+                  width: 100%
+
+      .techImgContainer
+        height: 100%
+        width: 100%
+        display: flex
+        justify-content: flex-start
+        align-items: center
+        background: white
+        img
+          flex: 1
+          width: 80%
+          height: 80%
+          object-fit: contain
+
+    .subjectInfoContainer
+      border-radius: $borderRadius
+      margin: 0em 3em 0em 3em
+      flex: 2
+      display: flex
+      background-color: $primaryPurple3
+      .content
+        @extend %border
+        flex: 1
+        border-radius: $borderRadius
+        background-color: $lightPurple
+        margin: 1em
+    .searchFeatureOuterContainerViewMode
+      position: relative
+      @include searchFeatureOuterContainer(1em, 1em, 0em, 1em)
+      .searchResultSection
+        align-self: center
+        height: 100%
+        width: 17em
+        margin-bottom: 1em
+    .searchFeatureOuterContainerBriefMode
+      align-self: center
+      position: relative
+      @include searchFeatureOuterContainer(0, 0, 0, 0)
+      .searchResultSection
+        position: absolute
+        width: 17em
+        top: 2.7em
+        right: 0
+        left: 0
+        margin: auto
+        z-index: -1
+    .tabsContainer
+      position: absolute
+      top: -21px
+      z-index: -1
+      right: 10px
+      justify-content: flex-end
+      .tab
+        width: 5em
+        height: 1em
+        display: flex
+        justify-content: space-around
+        align-items: center
+        color: $primaryTextColor
+        background: $primaryPurple3
+        border-radius: .5em .5em 0em 0em
+        margin: 0px 5px 0px 5px
+        padding: 5px 5px 0px 5px
+      .filter
+        width: 4em
+        display: flex
+        flex-direction: row
+      .unselectedTab
+        // opacity: .9
+        background: rgba(204,197,239,.5)
+        &:hover
+          cursor: pointer
+          opacity: 1
+
+    .line
+      width: 90%
+      &:not(:last-child)
+        background: $borderColor
+        height: .5px
+    .oddLine
+      width: 80%
+
+    .accordionGeneralSection
+      .statusContainer
+        flex: 1
+        display: flex
+        align-items: center
+        justify-content: flex-end
+        .progressBar
+          margin-left: 1em
+          border: .1px solid $borderColor
+          border-radius: $borderRadius
+      .accordionDetails
+        background: $lightPurple
+
+  .sectionTwoRelevance
+    // min-height: 25em //////////////////////////
+    background-color: $primaryPurple3
+    margin: 0em 1.5em 0em 1.5em
+    padding: 1.5em 0em 1.5em 0em
+    .card
+      transition: transform 0.2s ease-in-out
+      position: relative
+      margin: 1.5em 0em 1.5em 0em
+      height: 20em
+      width: 600px
+      display: flex
+      align-items: normal
+      border-radius: $borderRadius
+      overflow: hidden
+      .pictureFrameSection
+        flex: .8
+        background-color: #fff
+        display: flex
+        justify-content: center
+        align-items: center
+        .mobileFrame
+          width: 11.6em
+          object-fit: contain
+          position: relative
+        .mobileImg
+          position: absolute
+          height: 10em
+          width: 6em
+          object-fit: contain
+        .webFrame
+          width: 15em
+          object-fit: contain
+          position: relative
+        .webImg
+          position: absolute
+          height: 10em
+          width: 11.5em
+          top: 4.8em
+          object-fit: contain
+
+      .infoSection
+        flex: 1
+        display: flex
+        background-color: $lightPurple
+        .infoSectionCotainer
+          flex: 1
+          display: flex
+          flex-direction: column
+          .section1, .section3
+            padding: .5em
+            .header
+              border: .0px solid $primaryPurple4
+              border-bottom-width: 2px
+              border
+          .techContent
+            margin-top: .5em
+          .section1
+            border: 0px solid $primaryPurple4
+            border-bottom-width: 2px
+          .section2
+            flex: .5
+            display: flex
+            justify-items: center
+            align-items: center
+            margin-bottom: -1em
+          .progressBar
+            margin-left: 1em
+            background: #fff
+            border: .1px solid $borderColor
+            border-radius: $borderRadius
+            .title
+      
+  .projectTabHeader
+    margin: .5em .5em .5em 2.5em
+
+  .techCardContainer
+    width: 10em
+    height: 10em
+    background: white
+    margin: 2em
+    border-radius: 5em
+    display: flex
+    justify-content: center
+    align-items: center
+    -webkit-box-shadow: 0px 4px 21px 0px rgba(0,0,0,0.17)
+    -moz-box-shadow: 0px 4px 21px 0px rgba(0,0,0,0.17)
+    box-shadow: 0px 4px 21px 0px rgba(0,0,0,0.17)
+    position: relative
+    img
+      width: 70%
+      height: 70%
+      object-fit: contain

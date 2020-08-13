@@ -1,11 +1,10 @@
 import React, { useState } from 'react'
-import '../styles/experStyles.sass';
-import { animated, useTransition, useSprings } from 'react-spring';
+import { animated, useSprings } from 'react-spring';
 import { Button } from '@material-ui/core';
-import { Transition } from 'react-spring/renderprops';
 
 const ExperPg = () => {
   const [toggle, setToggle] = useState(false)
+  // eslint-disable-next-line 
   const [items, set]: any = useState([
     {
       key: 1, text: 'hey', transform: {
