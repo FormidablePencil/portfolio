@@ -11,11 +11,21 @@ function App() {
   const store = configureStore()
 
   return (
-    <Provider store={store}>
-      <ThemeProvider theme={customTheme}>
-        <LandingPage />
-      </ThemeProvider>
-    </Provider>
+    <div className="">
+      <Provider store={store}>
+        <ThemeProvider theme={customTheme}>
+          <img className='backgroundImg2' src={require('./assets/flowersbgbgBlured.png')} alt='' />
+          <div className="bgTint" />
+          {/* <Parallax pages={4.15} ref={parallaxRef}> */}
+            {/* <div className="backgroundImg"> */}
+            {/* <ParallaxLayer offset={0} speed={.1}> */}
+            <LandingPage />
+            {/* </ParallaxLayer> */}
+            {/* </div> */}
+          {/* </Parallax> */}
+        </ThemeProvider>
+      </Provider>
+    </div>
   );
 }
 

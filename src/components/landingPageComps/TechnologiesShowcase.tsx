@@ -1,10 +1,10 @@
 import React, { useRef } from 'react'
-import { animated, useTrail, useSpring } from "react-spring";
+import { animated, useTrail, useSpring, config } from "react-spring";
 import { imageUri2, imageUri, customAnimConfig, slowAnimConfig } from '../../staticData';
 import useOnScreen from '../../hooks/useOnScreen';
 
-const TrailTech = ({ imageUri, delay, leftDirection, sectionAppearedInView }) => {
-  const trail = useTrail(imageUri.length, sectionAppearedInView ?
+const TrailTech = ({ imageUri, delay, leftDirection, isIntersecting }) => {
+  const trail = useTrail(imageUri.length, isIntersecting ?
     { opacity: 1, config: customAnimConfig, delay } : { opacity: 0 }) // trailing opacity anim is a little taxing
 
   return (
@@ -22,50 +22,60 @@ const TrailTech = ({ imageUri, delay, leftDirection, sectionAppearedInView }) =>
   )
 }
 
-function TechnologiesShowcase() {
+function TechnologiesShowcase({ introVisible }) {
   const sectionRef = useRef(null)
-  const sectionAppearedInView: boolean = useOnScreen(sectionRef)
+  const { isIntersecting } = useOnScreen(sectionRef, 'techShowcase')
+
   const opacityProps = useSpring({
     from: { opacity: 0 },
-    to: { opacity: sectionAppearedInView ? 1 : 0 },
-    config: slowAnimConfig,
+    to: { opacity: isIntersecting ? 1 : 0 },
+    config: customAnimConfig,
     delay: 500
+  })
+  const opacitOfWholeCompProps = useSpring({
+    from: { opacity: 1 },
+    to: { opacity: !isIntersecting && introVisible ? 1 : isIntersecting && introVisible ? 0 : 1 },
+    config: isIntersecting && introVisible ? config.default : slowAnimConfig,
+    // to: { opacity: !isIntersecting ? 0 : 1 },
+    // config: isIntersecting && introVisible ? config.default :slowAnimConfig,
   })
 
   return (
     <>
-      <div className='tech-section'>
+      <animated.div
+        style={opacitOfWholeCompProps}
+        className='tech-section'>
         <div className='techShowcase'>
           <div className='leftCol'>
-            <TrailTech sectionAppearedInView={sectionAppearedInView} leftDirection={false} delay={1000} imageUri={imageUri} />
+            <TrailTech isIntersecting={isIntersecting} leftDirection={false} delay={1000} imageUri={imageUri} />
           </div>
           <div className='leftCol'>
-            <TrailTech sectionAppearedInView={sectionAppearedInView} leftDirection={false} delay={1500} imageUri={imageUri2} />
+            <TrailTech isIntersecting={isIntersecting} leftDirection={false} delay={1500} imageUri={imageUri2} />
           </div>
           <animated.div className='midTech' style={opacityProps}>
-            <div className="textContainer">
+            <div  className="textContainer">
               <div className='mainTechTextContainer'>
                 <p className='firstLeter'>M</p><p>ongo</p>
               </div>
-              <div ref={sectionRef} className='mainTechTextContainer'>
+              <div  className='mainTechTextContainer'>
                 <p className='firstLeter'>E</p><p>xpress</p>
               </div>
               <div className='mainTechTextContainer'>
                 <p className='firstLeter'>R</p><p>eact</p>
               </div>
-              <div className='mainTechTextContainer'>
+              <div  ref={sectionRef} className='mainTechTextContainer'>
                 <p className='firstLeter'>N</p><p>ode</p>
               </div>
             </div>
           </animated.div>
           <div className='rightCol'>
-            <TrailTech sectionAppearedInView={sectionAppearedInView} leftDirection={true} delay={1500} imageUri={imageUri2} />
+            <TrailTech isIntersecting={isIntersecting} leftDirection={true} delay={1500} imageUri={imageUri2} />
           </div>
           <div className='rightCol'>
-            <TrailTech sectionAppearedInView={sectionAppearedInView} leftDirection={true} delay={1000} imageUri={imageUri} />
+            <TrailTech isIntersecting={isIntersecting} leftDirection={true} delay={1000} imageUri={imageUri} />
           </div>
         </div>
-      </div>
+      </animated.div>
     </>
   )
 }

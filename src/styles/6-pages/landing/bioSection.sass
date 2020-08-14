@@ -3,24 +3,44 @@
   flex-direction: row
   justify-content: space-evenly
   align-items: center
-  p.name
-    font-family: $fontFamilyCursive
-    font-size: $fontSizeName
-
-  // height: 100vh //*
+  @media only screen and (max-width: 775px)
+    flex-wrap: wrap
+  .textContainer
+    flex: 1
+    justify-content: center
+    max-width: 50em
+    min-width: 30em
+    margin: 2em
+    p.name
+      display: flex
+      flex: 1
+      font-family: $fontFamilyCursive
+      font-size: 4vw
+      margin-left: 1em
+    p.paragraph
+      font-size: $fontSizeReg
+      // max-width: 40em
+      display: flex
+      flex: 1 1 20em
+      border-radius: 1em
+      padding: 1em
+      background: $bgColor1
   .imgFrame
-    height: 25em
-    width: 18em
+    // flex: 1
+    height: 20em
+    margin-left: 2em
+    min-width: 15em
+    width: 15em
     border-radius: 2em
     overflow: hidden
     display: flex
-    background: white
+    background: black
+    margin-bottom: -5vh
     .img
       width: 100%
       object-fit: cover
-  p.paragraph
-    margin: 0em 0em 2em 0em
-    width: 40em
-    border-radius: 1em
-    padding: 1em
-    background: $bgColor1
+    .filterTint
+      @extend .imgFrame
+      position: absolute
+      background: #731e2b39
+      margin-left: 0

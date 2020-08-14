@@ -1,35 +1,62 @@
+
+.backgroundImg
+  background-image: url(../../../assets/flowerPatternEditted.jpg)
+  background-color: orange
+  background-attachment: scroll
+  background-repeat: repeat
+  object-fit: contain
+  background-size: 100vw
+  z-index: -1
+  height: 100%
+  width: 100vw
+  // position: fixed  
+  // object-fit: contain
+.backgroundImg2
+  z-index: -2
+  height: 100vh
+  width: 100vw
+  position: fixed
+  object-fit: cover
+.bgTint
+  @extend .backgroundImg2
+  z-index: -1
+  background: #000000a9
+
 .landing-page
-  .backgroundImg
-    z-index: -1
-    height: 100vh
-    width: 100vw
-    position: fixed
-    object-fit: cover
 
   p
     color: $textLight
 
   .introSection
     height: 100vh
+    margin: 0 0 -20vh 0
   @import ./introSection
 
   .tech-section
-    padding: 10vh 0 10vh 0
-    height: 100vh
+    z-index: 100
+    // // padding: 20vh 0 20vh 0
+    // height: 100vh
   @import ./techSection
 
   .project-section
-    padding: 10vh 0 10vh 0
+    // padding: 10vh 0 10vh 0
+    // margin: 30vh 0 30vh 0
     height: 100vh
   @import ./projectSection
 
   .brief-bio-section
-    padding: 10vh 0 10vh 0
-    height: 100vh
+    // padding: 5vh 0 5vh 0
+    margin-bottom: -10vh
+    height: 80vh
   @import ./bioSection
 
   .contacts-section
+    // padding: 0 0 33vh 0
+    display: flex
+    align-items: center
+    justify-content: center
     height: 100vh
+
   @import ./contactsSection
 
   // .border

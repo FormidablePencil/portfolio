@@ -11,12 +11,18 @@
       justify-content: center
       .imgContainer
         margin: 40px 0em 40px 0em
-        width: 100px
+        width: 6em
+        @media screen and (max-width: 900px)
+          width: 4em
         img
           @extend %basicElementHoverReturn
           object-fit: contain
-          width: 100px
-          height: 100px
+          width: 6em
+          height: 6em
+          @media screen and (max-width: 900px)
+            width: 4em
+            height: 4em
+
           &:hover
             @extend %basicElementHoverProperties
     .midTech
@@ -35,6 +41,8 @@
             color: $textColorPrimary
             font-size: $fontSizeMainTech
             font-family: $fontFamilyCursive
+            @media screen and (max-width: 900px)
+              font-size: 3em
           p.firstLeter
             margin-right: 0
-            color: white
+            color: $textLight

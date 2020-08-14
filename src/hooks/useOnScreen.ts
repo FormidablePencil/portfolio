@@ -1,15 +1,19 @@
 import { useState, useEffect } from "react";
 
 //Todo: if window reload components should not animated when scrolling up,
-function useOnScreen(ref, rootMargin = '0px') {
+function useOnScreen(ref, whatSection, toggle?: Function | false, rootMargin = '0px') {
   // State and setter for storing whether element is visible
   const [isIntersecting, setIntersecting] = useState(false);
+
+  //* If intro and tech then hide tech. 
+  //* If Bio and contacts are present then hide bio.
 
   useEffect(() => {
     const observer = new IntersectionObserver(
       ([entry]) => {
         // Update our state when observer callback fires
-        if (entry.isIntersecting) setIntersecting(entry.isIntersecting); //don't update when false
+        if (toggle) toggle(entry.isIntersecting)
+        if (entry.isIntersecting) setIntersecting(entry.isIntersecting) //show anim but don't hide
       },
       {
         rootMargin
@@ -25,7 +29,7 @@ function useOnScreen(ref, rootMargin = '0px') {
     // eslint-disable-next-line
   }, []); // Empty array ensures that effect is only run on mount and unmount
 
-  return isIntersecting;
+  return { isIntersecting };
 }
 
 export default useOnScreen

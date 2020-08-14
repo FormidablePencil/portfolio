@@ -33,7 +33,7 @@ const imageUri2 = [
 ]
 export { imageUri, imageUri2 }
 
-const customAnimConfig = { mass: 1, tension: 120, friction: 30 }
+const customAnimConfig = { mass: 1, tension: 30, friction: 10 }
 const slowAnimConfig = { mass: 1, tension: 56, friction: 50 }
 export { customAnimConfig, slowAnimConfig }
 

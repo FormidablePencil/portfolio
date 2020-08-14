@@ -20,7 +20,6 @@ const Project = ({ isMobile, images }) => {
     if (!leftDirection && imageIndex === images.length - 1) return false
     return true
   }
-  console.log(images[0]);
 
   return (
     <div className='container'>
@@ -36,11 +35,11 @@ const Project = ({ isMobile, images }) => {
 
       <div className='frame'>
         <img className={frameClassName} src={frame} alt='' />
-        <SwipeableViews index={imageIndex} style={{
+        <SwipeableViews index={imageIndex} className='switchableArea-smartphone' style={{
           position: 'absolute',
           top: '17.5px',
           height: '323px',
-          width: '145px',
+          // width: '145px',
         }}>
           {images.map(image =>
             <img className={imageClassName} /* //* static data for testing doesn't work so I must use pulled data */
