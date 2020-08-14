@@ -24,7 +24,7 @@ const TrailTech = ({ imageUri, delay, leftDirection, sectionAppearedInView }) =>
 
 function TechnologiesShowcase() {
   const sectionRef = useRef(null)
-  const sectionAppearedInView: boolean = useOnScreen(sectionRef, '-400px')
+  const sectionAppearedInView: boolean = useOnScreen(sectionRef)
   const opacityProps = useSpring({
     from: { opacity: 0 },
     to: { opacity: sectionAppearedInView ? 1 : 0 },
@@ -34,7 +34,7 @@ function TechnologiesShowcase() {
 
   return (
     <>
-      <div ref={sectionRef} className='tech-section'>
+      <div className='tech-section'>
         <div className='techShowcase'>
           <div className='leftCol'>
             <TrailTech sectionAppearedInView={sectionAppearedInView} leftDirection={false} delay={1000} imageUri={imageUri} />
@@ -47,7 +47,7 @@ function TechnologiesShowcase() {
               <div className='mainTechTextContainer'>
                 <p className='firstLeter'>M</p><p>ongo</p>
               </div>
-              <div className='mainTechTextContainer'>
+              <div ref={sectionRef} className='mainTechTextContainer'>
                 <p className='firstLeter'>E</p><p>xpress</p>
               </div>
               <div className='mainTechTextContainer'>

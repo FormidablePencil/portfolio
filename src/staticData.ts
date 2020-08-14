@@ -53,7 +53,7 @@ export const staticProjects: projectT[] = [
     ],
     mobileImgs: [
       {
-        image: require('./assets/app images/Screenshot_20200629-225350_Simple_Pokedex.jpg'),
+        image: require('./assets/app images/Screenshot_20200629-225357_Simple Pokedex.jpg'),
         description: 'sdsd'
       },
       {
@@ -68,6 +68,10 @@ export const staticProjects: projectT[] = [
   },
   {
     desktopImages: [
+      {
+        image: require('./assets/app images/Screenshot_20200629-225350_Simple_Pokedex.jpg'),
+        description: 'sdsd'
+      },
       {
         image: require('./assets/app images/Screenshot_20200629-225350_Simple_Pokedex.jpg'),
         description: 'sdsd'

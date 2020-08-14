@@ -23,6 +23,7 @@ function SubjectImageShowcase() {
         </Button>
       </div>
       <img className='imgMain'
+        // style={{width: '40px'}}
         src={typeof currentSubjectViewing === 'number' &&
           projectDataCollection[currentSubjectViewing] ?
           projectDataCollection[currentSubjectViewing].images[0] : '123'} alt='' />

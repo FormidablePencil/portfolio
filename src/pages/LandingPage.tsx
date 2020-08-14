@@ -5,11 +5,13 @@ import ProjectsShowcase from '../landingPageComps/ProjectsShowcase'
 import useFetchAllPortfolioData from '../hooks/useFetchAllPortfolioData'
 import Intro from '../landingPageComps/Intro'
 import Contacts from '../landingPageComps/Contacts'
+import Navbar from '../Navbar'
 
 //~ todos right now: There's a day's of work left on the landing page, making it responsive and mobile mode.
 //* projects opacity animation and transiiton from left to give user info that it's a switchable/scrollable component
 //* bio and contacts anim
 //Todo: animational effects to create: opacity projects, chain/trailing bio; name => bio => image, opacity or transition from sides.
+//Todo: 
 
 //Todo: on mobile they're going to let the user only click on where they want to go. It should be blazzing fast without reloading too.
 const LandingPage = () => {
@@ -22,6 +24,7 @@ const LandingPage = () => {
 
   return (
     <div className='landing-page'>
+      <img className='backgroundImg' src={require('../assets/flowerPatternBlurred.jpg')} alt='' />
       <Intro />
       <TechnologiesShowcase />
       <ProjectsShowcase />

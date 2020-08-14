@@ -9,7 +9,7 @@ import { DemoRoutes } from './pages/DemoSection';
 import { Provider } from 'react-redux'
 import configureStore from './store';
 import './styles/main.sass';
-// import Navbar from './Navbar';
+import Navbar from './Navbar';
 
 function App() {
   const store = configureStore()
@@ -17,19 +17,19 @@ function App() {
   return (
     <Provider store={store}>
       <ThemeProvider theme={customTheme}>
-        <Router>
-          {/* <Navbar /> */}
-          <Switch>
-            <Route exact path="/">
-              <LandingPage />
-            </Route>
-            <DemoRoutes />
-            <Route path="/experimental">
-              <ExperPg /> {/* add open source tab... */}
-            </Route>
-            <DemoRoutes />
-          </Switch>
-        </Router>
+        {/* <Router> */}
+        {/* <Navbar /> */}
+        {/* <Switch> */}
+        {/* <Route exact path="/"> */}
+        <LandingPage />
+        {/* </Route> */}
+        {/* <DemoRoutes /> */}
+        {/* <Route path="/experimental"> */}
+        {/* <ExperPg />  */}
+        {/* </Route> */}
+        {/* <DemoRoutes /> */}
+        {/* </Switch> */}
+        {/* </Router> */}
       </ThemeProvider>
     </Provider>
   );

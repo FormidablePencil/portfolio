@@ -10,6 +10,7 @@ import macbookFrame from '../../assets/macbookFrame.png'
 import SubjectImageShowcase from './projectGallery/SubjectImageShowcase'
 import { AccordionComponent, TextFormated } from './reusableComps/DemoSectionOneComps'
 
+//Todo: add open source tab...
 function ProjectsGallery() {
   const { currentSubjectViewing, projectDataCollection } = useSelector((state: rootReducerT) => state)
   const [sortedProjectData, setSortedProjectData] = useState<sortedProjectDataT>()
