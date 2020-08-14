@@ -1,11 +1,10 @@
 import React from 'react'
-import BriefBio from '../landingPageComps/BriefBio'
-import TechnologiesShowcase from '../landingPageComps/TechnologiesShowcase'
-import ProjectsShowcase from '../landingPageComps/ProjectsShowcase'
+import BriefBio from '../components/landingPageComps/BriefBio'
+import TechnologiesShowcase from '../components/landingPageComps/TechnologiesShowcase'
+import ProjectsShowcase from '../components/landingPageComps/ProjectsShowcase'
 import useFetchAllPortfolioData from '../hooks/useFetchAllPortfolioData'
-import Intro from '../landingPageComps/Intro'
-import Contacts from '../landingPageComps/Contacts'
-import Navbar from '../Navbar'
+import Intro from '../components/landingPageComps/Intro'
+import Contacts from '../components/landingPageComps/Contacts'
 
 //~ todos right now: There's a day's of work left on the landing page, making it responsive and mobile mode.
 //* projects opacity animation and transiiton from left to give user info that it's a switchable/scrollable component

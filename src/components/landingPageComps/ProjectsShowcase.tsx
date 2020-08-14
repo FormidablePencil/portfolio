@@ -1,10 +1,10 @@
 import React, { useState, useRef, useEffect } from 'react'
 import { Button } from '@material-ui/core';
-import { staticProjects } from '../staticData';
+import { staticProjects } from '../../staticData';
 import SwipeableViews from 'react-swipeable-views';
 // import { bindKeyboard } from 'react-swipeable-views-utils';
 import Project from './Project';
-import useOnScreen from '../hooks/useOnScreen';
+import useOnScreen from '../../hooks/useOnScreen';
 import { config, useSpring, animated } from 'react-spring';
 // import { rootReducerT } from '../store';
 // import { useSelector } from 'react-redux';

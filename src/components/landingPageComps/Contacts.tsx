@@ -1,7 +1,7 @@
 import React, { useRef } from 'react'
 import { Button, TextField } from '@material-ui/core'
 import { useSpring, config, animated } from 'react-spring'
-import useOnScreen from '../hooks/useOnScreen'
+import useOnScreen from '../../hooks/useOnScreen'
 
 function Contacts() {
   const message = 'Message....'

@@ -1,6 +1,6 @@
 import React, { useRef } from 'react'
-import profile from '../assets/20190404_080008.jpg';
-import useOnScreen from '../hooks/useOnScreen';
+import profile from '../../assets/20190404_080008.jpg';
+import useOnScreen from '../../hooks/useOnScreen';
 import { useSpring, config, animated } from 'react-spring';
 
 function BriefBio() {

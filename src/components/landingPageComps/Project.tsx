@@ -6,7 +6,7 @@ const Project = ({ isMobile, images }) => {
   const [imageIndex, setImageIndex] = useState(0)
   const frameClassName = isMobile ? 'smartphoneFrame noselect' : 'desktopFrame noselect'
   const imageClassName = isMobile ? 'smartphoneImage noselect' : 'desktopImage noselect'
-  const frame = isMobile ? require('../assets/galaxys8Frame.png') : require('../assets/macbookFrame.png')
+  const frame = isMobile ? require('../../assets/galaxys8Frame.png') : require('../../assets/macbookFrame.png')
   const imageSwitchingArrowMargin = isMobile ? '0em' : '-.5em'
 
   const onClickArrow = ({ leftDirection, isMobile }) => { /* //! I fucked up again! I need images to render all in in a swiper component */
@@ -44,7 +44,7 @@ const Project = ({ isMobile, images }) => {
         }}>
           {images.map(image =>
             <img className={imageClassName} /* //* static data for testing doesn't work so I must use pulled data */
-              src={require('../assets/app images/Screenshot_20200629-225350_Simple_Pokedex.jpg')}
+              src={require('../../assets/app images/Screenshot_20200629-225350_Simple_Pokedex.jpg')}
               // src={image}
               alt='app'
             />

@@ -1,7 +1,7 @@
 import React, { useRef } from 'react'
 import { animated, useSpring, useChain, config } from 'react-spring'
-import { customAnimConfig } from '../staticData'
-import useOnScreen from '../hooks/useOnScreen'
+import { customAnimConfig } from '../../staticData'
+import useOnScreen from '../../hooks/useOnScreen'
 
 const Intro = () => {
   const sectionRef = useRef(null)

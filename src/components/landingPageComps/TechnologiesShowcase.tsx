@@ -1,7 +1,7 @@
 import React, { useRef } from 'react'
 import { animated, useTrail, useSpring } from "react-spring";
-import { imageUri2, imageUri, customAnimConfig, slowAnimConfig } from '../staticData';
-import useOnScreen from '../hooks/useOnScreen';
+import { imageUri2, imageUri, customAnimConfig, slowAnimConfig } from '../../staticData';
+import useOnScreen from '../../hooks/useOnScreen';
 
 const TrailTech = ({ imageUri, delay, leftDirection, sectionAppearedInView }) => {
   const trail = useTrail(imageUri.length, sectionAppearedInView ?
