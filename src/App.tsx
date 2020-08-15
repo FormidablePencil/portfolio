@@ -7,21 +7,26 @@ import { Provider } from 'react-redux'
 import configureStore from './store';
 import './styles/main.sass';
 
+const { innerWidth } = window
+
 function App() {
   const store = configureStore()
 
   return (
-    <div className="">
+    <div className={innerWidth < 500 ? "backgroundImg" : ''}>
+      <div className="bgTint" />
       <Provider store={store}>
         <ThemeProvider theme={customTheme}>
-          <img className='backgroundImg2' src={require('./assets/flowersbgbgBlured.png')} alt='' />
-          <div className="bgTint" />
+          {innerWidth > 500 &&
+            <img className='backgroundImg2' src={require('./assets/flowersbgbgBluredDark.png')} alt='' />
+          }
+          <div className='' />
           {/* <Parallax pages={4.15} ref={parallaxRef}> */}
-            {/* <div className="backgroundImg"> */}
-            {/* <ParallaxLayer offset={0} speed={.1}> */}
-            <LandingPage />
-            {/* </ParallaxLayer> */}
-            {/* </div> */}
+          {/* <div className="backgroundImg"> */}
+          {/* <ParallaxLayer offset={0} speed={.1}> */}
+          <LandingPage />
+          {/* </ParallaxLayer> */}
+          {/* </div> */}
           {/* </Parallax> */}
         </ThemeProvider>
       </Provider>

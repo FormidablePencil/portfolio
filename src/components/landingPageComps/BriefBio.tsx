@@ -3,28 +3,32 @@ import profile from '../../assets/20190404_080008.jpg';
 import useOnScreen from '../../hooks/useOnScreen';
 import { useSpring, animated } from 'react-spring';
 import { customAnimConfig } from '../../staticData';
+import { viewingOnMobileDimensions } from './Intro';
+
+const { innerWidth } = window
 
 function BriefBio() {
   const sectionRef = useRef(null)
-  const { isIntersecting } = useOnScreen(sectionRef, 'bio', false, '-200px')
-  
+  const { isIntersecting } = useOnScreen(sectionRef, 'bio', false, '0px')
+
   const animOpacity = useSpring({
-    from: { opacity: 0, },
-    to: { opacity: isIntersecting ? 1 : 0 },
+    from: { opacity: innerWidth < 500 ? 1 : 0, },
+    to: { opacity: isIntersecting || innerWidth < 500 ? 1 : 0 },
     config: customAnimConfig,
-    delay: isIntersecting ? 800 : 0
+    delay: isIntersecting ? 0 : 0
   })
 
   return (
-    <animated.div style={animOpacity} className='brief-bio-section'>
+    <animated.div style={viewingOnMobileDimensions().height ?
+      { height: viewingOnMobileDimensions().height, ...animOpacity } : { ...animOpacity }} className='brief-bio-section'>
       <div className='imgFrame'>
         <img className="img" alt='profile' src={profile} />
         <div className="filterTint" />
       </div>
-      <div className='textContainer'>
+      <div ref={sectionRef} className='textContainer'>
         <p className='name'>Dennis Aleksandrov</p>
         {/* <div className="paragraphBox"> */}
-        <p ref={sectionRef} className='paragraph'>
+        <p className='paragraph'>
           Lorem ipsum dolor sit, amet consectetur adipisicing elit. Explicabo ut eaque nisi porro velit, similique dicta nobis deserunt atque provident saepe, consequuntur soluta cum. Veritatis assumenda ullam possimus quidem harum?
           Lorem ipsum dolor sit, amet consectetur adium dolor sit, amet consectetur adipisicing elit. Explicabo ut eaque nisi porro velit, similique dicta nobis deserunt atque provident saepe, consequuntur soluta cum. Veritatis assumenda ullam possimus quidem harum?
           You can learn more about me in "my-bubble dream theory .com".

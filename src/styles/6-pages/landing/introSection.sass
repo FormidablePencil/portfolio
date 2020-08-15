@@ -1,16 +1,19 @@
 .introSection
   display: flex
-  align-items: center
+  flex-direction: column
   justify-content: center
   .banner
-    flex: 1
+    z-index: 1
+    // flex: 1
     height: $bannerHeight
     display: flex
     align-items: center
     justify-content: center
     background: $bgColor2
     .textContainer
-      width: 500px
+      min-width: 20em
+      margin: 0em 1em 0em 1em
+
       p
         text-align: center
         font-size: $fontSizeMed

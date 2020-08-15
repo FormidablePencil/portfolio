@@ -24,11 +24,11 @@ const Project = ({ isMobile, images }) => {
   return (
     <div className='container'>
       <IoMdArrowDropleft
-        className='transparentBtn'
+        className={imageIndex === 0 ? 'inactiveBtn' : 'transparentBtn'}
         onClick={() => onClickArrow({ isMobile, leftDirection: true })}
         style={{
           zIndex: 5,
-          color: imageIndex === 0 ? 'rgba(129,129,129,.2)' : '',
+          color: imageIndex === 0 ? 'inactiveBtn' : '',
           position: "absolute",
           left: imageSwitchingArrowMargin
         }} />

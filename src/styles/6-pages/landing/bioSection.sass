@@ -1,15 +1,10 @@
 .brief-bio-section
-  display: flex
-  flex-direction: row
-  justify-content: space-evenly
-  align-items: center
-  @media only screen and (max-width: 775px)
-    flex-wrap: wrap
   .textContainer
+    z-index: 10
     flex: 1
     justify-content: center
     max-width: 50em
-    min-width: 30em
+    min-width: 20em
     margin: 2em
     p.name
       display: flex
@@ -26,6 +21,7 @@
       padding: 1em
       background: $bgColor1
   .imgFrame
+    z-index: 10
     // flex: 1
     height: 20em
     margin-left: 2em
@@ -35,12 +31,12 @@
     overflow: hidden
     display: flex
     background: black
-    margin-bottom: -5vh
+    // margin-bottom: -5vh
     .img
       width: 100%
       object-fit: cover
     .filterTint
       @extend .imgFrame
       position: absolute
-      background: #731e2b39
+      background: #731e2b1b
       margin-left: 0

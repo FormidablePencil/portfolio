@@ -1,5 +1,6 @@
 import { useState, useEffect } from "react";
 
+const { innerWidth } = window
 //Todo: if window reload components should not animated when scrolling up,
 function useOnScreen(ref, whatSection, toggle?: Function | false, rootMargin = '0px') {
   // State and setter for storing whether element is visible
@@ -9,6 +10,7 @@ function useOnScreen(ref, whatSection, toggle?: Function | false, rootMargin = '
   //* If Bio and contacts are present then hide bio.
 
   useEffect(() => {
+    if (innerWidth < 500) return
     const observer = new IntersectionObserver(
       ([entry]) => {
         // Update our state when observer callback fires

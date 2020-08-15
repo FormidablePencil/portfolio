@@ -6,13 +6,16 @@
     background: $bgColor2
     min-height: $bannerHeight
     width: 100%
+    z-index: 10
     .container
+      padding: 0 5em 0 5em
       display: flex
       justify-content: space-evenly
       align-items: center
-      min-width: 30em
+      min-width: 10em
       flex-wrap: wrap
-      margin: 1em 3em 1em 3em
+      @media only screen and (max-width: 775px)
+        padding: 0
       .contacts
         align-items: center
         justify-content: space-evenly
@@ -20,16 +23,16 @@
         background: rgba(235,235,235,.2)
         // background: rgba(122,101,104,1)
         border-radius: $borderRadius
-        padding: 1em
+        // padding: 1em
         // width: 28em
-        min-width: 22em
+        min-width: 21.5em
         flex: 1
         height: 12em
         display: flex
         margin: 1em
+        padding: 1em 0em 1em 0em
         p
-          margin: 1em
-          -ms-line-break: newspaper
+          margin: 1em 0 1em 0
         .contactLabels
         .personalContactInfo
       .leaveMesg
@@ -37,16 +40,15 @@
         flex-direction: column
         .textArea
           background: $textLight
-          width: 100%
+          width: 90%
           padding: .2em
           border-radius: .3em
         .submitBtn
-          margin: 1em -.3em 0em 0
-          width: 8em
-          align-self: flex-end
+          top: 7px
+          // align-self: flex-end
 
 .custom-class
-  height: 300vh
+  // height: 300vh
   position: absolute
 
 .experImg

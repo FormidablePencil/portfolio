@@ -1,70 +1,63 @@
+%vhWorkableOnAllBrowsers
+  height: 100vh
+  // min-height: 100vh
+  // min-height: -webkit-fill-available
 
 .backgroundImg
-  background-image: url(../../../assets/flowerPatternEditted.jpg)
-  background-color: orange
-  background-attachment: scroll
-  background-repeat: repeat
+  background-image: url(../../../assets/flowersbgbgBluredDark.png)
+  background-repeat: no-repeat
+  background-size: 8000px
+  background-size: -webkit-fill-available
   object-fit: contain
-  background-size: 100vw
-  z-index: -1
-  height: 100%
-  width: 100vw
-  // position: fixed  
-  // object-fit: contain
 .backgroundImg2
+  top: 0
+  bottom: 0
   z-index: -2
-  height: 100vh
   width: 100vw
+  z-index: -100
+  margin: 0
   position: fixed
   object-fit: cover
-.bgTint
-  @extend .backgroundImg2
-  z-index: -1
-  background: #000000a9
+  -moz-background-size: cover
+  background: url(../../../assets/flowerPatternEditted.jpg) no-repeat fixed
+  @extend %vhWorkableOnAllBrowsers
 
 .landing-page
+  z-index: 5
 
   p
     color: $textLight
 
-  .introSection
-    height: 100vh
-    margin: 0 0 -20vh 0
   @import ./introSection
+  .introSection
+    @extend %vhWorkableOnAllBrowsers
 
-  .tech-section
-    z-index: 100
-    // // padding: 20vh 0 20vh 0
-    // height: 100vh
   @import ./techSection
+  .tech-section
+    @extend %vhWorkableOnAllBrowsers
 
-  .project-section
-    // padding: 10vh 0 10vh 0
-    // margin: 30vh 0 30vh 0
-    height: 100vh
   @import ./projectSection
+  .project-section
+    @extend %vhWorkableOnAllBrowsers
+    top: 0
+    @media only screen and (max-width: 500px)
+      height: $bannerHeight * 3
+      // margin: 10em 0 10em 0
+    // min-height: -webkit-fill-availablea
 
-  .brief-bio-section
-    // padding: 5vh 0 5vh 0
-    margin-bottom: -10vh
-    height: 80vh
   @import ./bioSection
+  .brief-bio-section
+    @extend %vhWorkableOnAllBrowsers
+    display: flex
+    flex-direction: row
+    justify-content: space-evenly
+    align-items: center
+    @media only screen and (max-width: 775px)
+      flex-wrap: wrap
 
+  @import ./contactsSection
   .contacts-section
-    // padding: 0 0 33vh 0
     display: flex
     align-items: center
     justify-content: center
-    height: 100vh
-
-  @import ./contactsSection
-
-  // .border
-  //   height: 10px
-  //   width: 100%
-  //   background-color: #0D0819
-
-  // .bgImage
-  //   background-image: url('../../../assets/flowerPatternEditted.jpg')
-  //   background-attachment: fixed
-  //   background-size: 100vw
+    @extend %vhWorkableOnAllBrowsers

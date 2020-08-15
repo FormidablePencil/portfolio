@@ -1,27 +1,30 @@
-import React, { useRef } from 'react'
+import React from 'react'
 import { animated, useSpring, config } from 'react-spring'
 import { customAnimConfig } from '../../staticData'
-import useOnScreen from '../../hooks/useOnScreen'
 
-const Intro = ({ toggleIntroPresent }) => {
-  const sectionRef = useRef(null)
-  useOnScreen(sectionRef, '', toggleIntroPresent) //is used to track toggle techShowcase opacity 
+const { innerWidth } = window
+export const viewingOnMobileDimensions = () => {
+  const { innerWidth, innerHeight } = window
+  return innerWidth < 500 ? { height: innerHeight } : {}
+}
+
+const Intro = () => {
   const propsBannerAnim = useSpring({
-    from: { opacity: 0, },
+    from: { opacity: innerWidth < 500 ? 1 : 0, },
     to: { opacity: 1, },
     config: config.default,
     delay: 1000
   })
   const propsParagraphAnim = useSpring({
-    from: { opacity: 0, transform: 'translateY(-100px)' },
+    from: innerWidth < 500 ? { opacity: 1, transform: 'translateY(0px)' } : { opacity: 0, transform: 'translateY(-60px)' },
     to: { opacity: 1, transform: 'translateY(0px)' },
     config: customAnimConfig,
     delay: 1400
   })
 
   return (
-    <div className='introSection'>
-      <animated.div ref={sectionRef} className="banner" style={propsBannerAnim}>
+    <div style={viewingOnMobileDimensions()} className='introSection'>
+      <animated.div className="banner" style={propsBannerAnim}>
         <animated.div className="textContainer" style={propsParagraphAnim}>
           <p>
             <p>

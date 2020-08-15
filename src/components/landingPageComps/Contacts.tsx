@@ -3,6 +3,9 @@ import { Button, TextField } from '@material-ui/core'
 import { useSpring, animated } from 'react-spring'
 import useOnScreen from '../../hooks/useOnScreen'
 import { customAnimConfig } from '../../staticData'
+import { viewingOnMobileDimensions } from './Intro'
+
+const { innerWidth } = window
 
 function Contacts() {
   const message = 'Message....'
@@ -10,15 +13,14 @@ function Contacts() {
   const { isIntersecting } = useOnScreen(sectionRef, 'contacts', false, '-200px')
   const animOpacity = useSpring({
     from: { opacity: 0, },
-    to: { opacity: isIntersecting ? 1 : 0 },
+    to: { opacity: isIntersecting || innerWidth < 500 ? 1 : 0 },
     config: customAnimConfig,
-    delay: 800
   })
-
+console.log(viewingOnMobileDimensions());
   return (
-    <animated.div ref={sectionRef} style={animOpacity} className='contacts-section'>
+    <animated.div style={viewingOnMobileDimensions()} ref={sectionRef} className='contacts-section'>
       <div className="contactsBox">
-        <div className="container">
+        <animated.div style={animOpacity} className="container">
           <div className="contacts">
             <div className="contactLabels">
               <p>Contacts</p>
@@ -41,9 +43,9 @@ function Contacts() {
               multiline={true}
               rows={4} />
             <TextField className='textArea' placeholder='Email:' value='' type='textarea' />
-            <Button variant='contained' color='secondary' className='submitBtn'>submit</Button>
+            <Button variant='contained' style={{backgroundColor: '#6CAE6B', color: 'white'}} className='submitBtn'>submit</Button>
           </div>
-        </div>
+        </animated.div>
       </div>
     </animated.div>
   )

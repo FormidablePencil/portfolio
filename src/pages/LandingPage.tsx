@@ -1,4 +1,4 @@
-import React, { useState } from 'react'
+import React from 'react'
 import BriefBio from '../components/landingPageComps/BriefBio'
 import TechnologiesShowcase from '../components/landingPageComps/TechnologiesShowcase'
 import ProjectsShowcase from '../components/landingPageComps/ProjectsShowcase'
@@ -20,14 +20,12 @@ const LandingPage = () => {
   // eslint-disable-next-line
   //Todo: add parallax last
   // useChain(!showElementOpacity ? [springRef, stackTranstionRef, springRef2] : [springRef, stackTranstionRef, springRef2], [1000, 3000])
-  const [introVisible, setIntroVisible] = useState(true)
 
-  const toggleIntroPresent = (boolean) => setIntroVisible(boolean)
-  
+
   return (
     <div className='landing-page'>
-      <Intro toggleIntroPresent={toggleIntroPresent} />
-      <TechnologiesShowcase introVisible={introVisible} />
+      <Intro />
+      <TechnologiesShowcase />
       <ProjectsShowcase />
       <BriefBio />
       <Contacts />
