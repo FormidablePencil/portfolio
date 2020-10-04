@@ -3,9 +3,9 @@ import { animated, useSpring, config } from 'react-spring'
 import { customAnimConfig } from '../../staticData'
 
 const { innerWidth } = window
-export const viewingOnMobileDimensions = () => {
+export const viewingOnMobileDimensions = (stylesIfNotMobile?: {}, overrideMobileStyles?: any): any => {
   const { innerWidth, innerHeight } = window
-  return innerWidth < 500 ? { height: innerHeight } : {}
+  return innerWidth < 800 ? overrideMobileStyles ?? { height: innerHeight } : stylesIfNotMobile ?? {}
 }
 
 const Intro = () => {

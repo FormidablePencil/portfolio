@@ -7,7 +7,7 @@ const Project = ({ isMobile, images }) => {
   const frameClassName = isMobile ? 'smartphoneFrame noselect' : 'desktopFrame noselect'
   const imageClassName = isMobile ? 'smartphoneImage noselect' : 'desktopImage noselect'
   const frame = isMobile ? require('../../assets/galaxys8Frame.png') : require('../../assets/macbookFrame.png')
-  const imageSwitchingArrowMargin = isMobile ? '0em' : '-.5em'
+  const imageSwitchingArrowMargin = isMobile ? '.6em' : '-.25em'
 
   const onClickArrow = ({ leftDirection, isMobile }) => { /* //! I fucked up again! I need images to render all in in a swiper component */
     if (canImageBeSwitchedCertainDirection({ leftDirection })) {
@@ -30,11 +30,14 @@ const Project = ({ isMobile, images }) => {
           zIndex: 5,
           color: imageIndex === 0 ? 'inactiveBtn' : '',
           position: "absolute",
-          left: imageSwitchingArrowMargin
+          left: imageSwitchingArrowMargin,
         }} />
 
       <div className='frame'>
-        <img className={frameClassName} src={frame} alt='' />
+        <img className={frameClassName}
+          style={{
+            width: isMobile ? 350 : 300
+           }} src={frame} alt='' />
         <SwipeableViews index={imageIndex} className='switchableArea-smartphone' style={{
           position: 'absolute',
           top: '17.5px',
@@ -42,7 +45,7 @@ const Project = ({ isMobile, images }) => {
           // width: '145px',
         }}>
           {images.map(image =>
-            <img className={imageClassName} /* //* static data for testing doesn't work so I must use pulled data */
+            <img className={imageClassName}  /* //* static data for testing doesn't work so I must use pulled data */
               src={require('../../assets/app images/Screenshot_20200629-225350_Simple_Pokedex.jpg')}
               // src={image}
               alt='app'
@@ -57,7 +60,7 @@ const Project = ({ isMobile, images }) => {
           zIndex: 5,
           color: imageIndex === images.length - 1 ? 'rgba(129,129,129,.2)' : '',
           position: "absolute",
-          right: imageSwitchingArrowMargin
+          right: imageSwitchingArrowMargin,
         }} />
     </div>
   )

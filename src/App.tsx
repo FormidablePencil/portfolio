@@ -9,6 +9,8 @@ import './styles/main.sass';
 
 const { innerWidth } = window
 
+//~ when entering app, image flashes then fixed position image shows up. Try changing the bg image to color then then ready change it
+
 function App() {
   const store = configureStore()
 

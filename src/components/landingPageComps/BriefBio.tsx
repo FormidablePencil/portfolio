@@ -5,7 +5,7 @@ import { useSpring, animated } from 'react-spring';
 import { customAnimConfig } from '../../staticData';
 import { viewingOnMobileDimensions } from './Intro';
 
-const { innerWidth } = window
+const { innerWidth, innerHeight } = window
 
 function BriefBio() {
   const sectionRef = useRef(null)
@@ -19,8 +19,10 @@ function BriefBio() {
   })
 
   return (
-    <animated.div style={viewingOnMobileDimensions().height ?
-      { height: viewingOnMobileDimensions().height, ...animOpacity } : { ...animOpacity }} className='brief-bio-section'>
+    <animated.div style={viewingOnMobileDimensions(
+      { ...animOpacity },
+      { height: innerHeight * 1.5, ...animOpacity }
+    )} className='brief-bio-section'>
       <div className='imgFrame'>
         <img className="img" alt='profile' src={profile} />
         <div className="filterTint" />

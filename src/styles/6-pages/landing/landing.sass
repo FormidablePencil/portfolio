@@ -1,7 +1,7 @@
 %vhWorkableOnAllBrowsers
   height: 100vh
-  // min-height: 100vh
-  // min-height: -webkit-fill-available
+  // min-height: 100vh 
+  // min-height: -webkit-fill-available //* next projects try this hack
 
 .backgroundImg
   background-image: url(../../../assets/flowersbgbgBluredDark.png)
@@ -34,7 +34,6 @@
 
   @import ./techSection
   .tech-section
-    @extend %vhWorkableOnAllBrowsers
 
   @import ./projectSection
   .project-section
@@ -47,13 +46,16 @@
 
   @import ./bioSection
   .brief-bio-section
-    @extend %vhWorkableOnAllBrowsers
     display: flex
     flex-direction: row
     justify-content: space-evenly
     align-items: center
     @media only screen and (max-width: 775px)
-      flex-wrap: wrap
+      flex-direction: column
+      flex: 1
+      align-items: center
+      // justify-content: flex-end
+      justify-content: center
 
   @import ./contactsSection
   .contacts-section
