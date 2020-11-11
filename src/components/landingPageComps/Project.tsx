@@ -9,7 +9,7 @@ const Project = ({ isMobile, images }) => {
   const frame = isMobile ? require('../../assets/galaxys8Frame.png') : require('../../assets/macbookFrame.png')
   const imageSwitchingArrowMargin = isMobile ? '.6em' : '-.25em'
 
-  const onClickArrow = ({ leftDirection, isMobile }) => { /* //! I fucked up again! I need images to render all in in a swiper component */
+  const onClickArrow = ({ leftDirection, isMobile }) => { /* //! I fd up again! I need images to render all in in a swiper component */
     if (canImageBeSwitchedCertainDirection({ leftDirection })) {
       if (leftDirection) setImageIndex(prev => prev - 1)
       else setImageIndex(prev => prev + 1)

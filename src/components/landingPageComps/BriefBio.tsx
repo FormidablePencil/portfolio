@@ -4,12 +4,16 @@ import useOnScreen from '../../hooks/useOnScreen';
 import { useSpring, animated } from 'react-spring';
 import { customAnimConfig } from '../../staticData';
 import { viewingOnMobileDimensions } from './Intro';
+import { rootReducerT } from '../../store';
+import { useSelector } from 'react-redux';
 
 const { innerWidth, innerHeight } = window
 
 function BriefBio() {
   const sectionRef = useRef(null)
   const { isIntersecting } = useOnScreen(sectionRef, 'bio', false, '0px')
+  const { bio } = useSelector((state: rootReducerT) => state.protfolioTextContent)
+
 
   const animOpacity = useSpring({
     from: { opacity: innerWidth < 500 ? 1 : 0, },
@@ -29,13 +33,9 @@ function BriefBio() {
       </div>
       <div ref={sectionRef} className='textContainer'>
         <p className='name'>Dennis Aleksandrov</p>
-        {/* <div className="paragraphBox"> */}
         <p className='paragraph'>
-          Lorem ipsum dolor sit, amet consectetur adipisicing elit. Explicabo ut eaque nisi porro velit, similique dicta nobis deserunt atque provident saepe, consequuntur soluta cum. Veritatis assumenda ullam possimus quidem harum?
-          Lorem ipsum dolor sit, amet consectetur adium dolor sit, amet consectetur adipisicing elit. Explicabo ut eaque nisi porro velit, similique dicta nobis deserunt atque provident saepe, consequuntur soluta cum. Veritatis assumenda ullam possimus quidem harum?
-          You can learn more about me in "my-bubble dream theory .com".
-          </p>
-        {/* </div> */}
+          {bio}
+        </p>
       </div>
     </animated.div>
   )

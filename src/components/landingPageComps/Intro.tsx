@@ -1,6 +1,8 @@
 import React from 'react'
+import { useSelector } from 'react-redux'
 import { animated, useSpring, config } from 'react-spring'
 import { customAnimConfig } from '../../staticData'
+import { rootReducerT } from '../../store'
 
 const { innerWidth } = window
 export const viewingOnMobileDimensions = (stylesIfNotMobile?: {}, overrideMobileStyles?: any): any => {
@@ -9,6 +11,7 @@ export const viewingOnMobileDimensions = (stylesIfNotMobile?: {}, overrideMobile
 }
 
 const Intro = () => {
+  const { intro } = useSelector((state: rootReducerT) => state.protfolioTextContent)
   const propsBannerAnim = useSpring({
     from: { opacity: innerWidth < 500 ? 1 : 0, },
     to: { opacity: 1, },
@@ -26,17 +29,19 @@ const Intro = () => {
     <div style={viewingOnMobileDimensions()} className='introSection'>
       <animated.div className="banner" style={propsBannerAnim}>
         <animated.div className="textContainer" style={propsParagraphAnim}>
-          <p>
+          {intro &&
             <p>
-              Hi, I’m a self taught programmer.
+              <p>
+                {intro[0]}
+              </p>
+              <p>
+                {intro[1]}
+              </p>
+              <p>
+                {intro[2]}
+              </p>
             </p>
-            <p>
-              I specialize in the MERN stack.
-            </p>
-            <p>
-              It’ll be my pleasure doing business with you.
-            </p>
-          </p>
+          }
         </animated.div>
       </animated.div>
     </div >

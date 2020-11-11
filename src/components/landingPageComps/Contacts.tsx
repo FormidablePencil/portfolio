@@ -1,13 +1,21 @@
-import React, { useRef } from 'react'
+import React, { useRef, useState } from 'react'
 import { Button, TextField } from '@material-ui/core'
 import { useSpring, animated } from 'react-spring'
 import useOnScreen from '../../hooks/useOnScreen'
 import { customAnimConfig } from '../../staticData'
 import { viewingOnMobileDimensions } from './Intro'
+import { rootReducerT } from '../../store'
+import { useSelector } from 'react-redux'
+import CopyToClipboard from 'react-copy-to-clipboard';
+import { setInterval } from 'timers'
+
 
 const { innerWidth } = window
 
 function Contacts() {
+  const { contacts } = useSelector((state: rootReducerT) => state.protfolioTextContent)
+  const [copiedText, setCopiedText] = useState(false)
+
   const message = 'Message....'
   const sectionRef = useRef(null)
   const { isIntersecting } = useOnScreen(sectionRef, 'contacts', false, '-200px')
@@ -16,34 +24,54 @@ function Contacts() {
     to: { opacity: isIntersecting || innerWidth < 500 ? 1 : 0 },
     config: customAnimConfig,
   })
-console.log(viewingOnMobileDimensions());
+  const onClickText = () => {
+    setCopiedText(true)
+    setTimeout(() => {
+      setCopiedText(false)
+    }, 1000);
+  }
+
+  const trimParagraph = (paragraph) => paragraph.slice(0, 34)
+
   return (
     <animated.div style={viewingOnMobileDimensions()} ref={sectionRef} className='contacts-section'>
       <div className="contactsBox">
         <animated.div style={animOpacity} className="container">
           <div className="contacts">
+            <p className={`
+            ${!copiedText ? 'copied-animation-hide' : 'copied-animation-show'}
+            dark-text
+            `}>
+              copied to clipboard
+            </p>
             <div className="contactLabels">
               <p>Contacts</p>
-              <p>Gitbub:</p>
+              <p>Github:</p>
               <p>Email:</p>
               <p>LinkedIn:</p>
             </div>
             <div className="personalContactInfo">
               <p>Dennis Aleksandrov</p>
-              <p>https://github.com/FormidablePencil</p>
+              {contacts &&
+                <>
+                  <p><a href={contacts.github}>{contacts.github}</a></p>
+                  <CopyToClipboard
+                    text={contacts.email}
+                    onCopy={onClickText}
+                  >
+                    <p className='pointer'>{contacts.email}</p>
+                  </CopyToClipboard>
+                  <p>
+                    <a href={contacts.linkedIn} className='linkedIn'>
+                      {trimParagraph(contacts.linkedIn)}...
+                    </a>
+                  </p>
+                </>
+              }
+              {/* <p>https://github.com/FormidablePencil</p>
               <p>formidablepencil@gmail.com</p>
-              <p>LinkedIn</p>
+              <p>LinkedIn</p> */}
             </div>
-          </div>
-          <div className="leaveMesg">
-            <TextField
-              className='textArea'
-              placeholder={message}
-              value=''
-              multiline={true}
-              rows={4} />
-            <TextField className='textArea' placeholder='Email:' value='' type='textarea' />
-            <Button variant='contained' style={{backgroundColor: '#6CAE6B', color: 'white'}} className='submitBtn'>submit</Button>
           </div>
         </animated.div>
       </div>

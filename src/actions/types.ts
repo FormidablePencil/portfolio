@@ -3,6 +3,7 @@ export const FETCHED_ALL_TECH_DATA = 'FETCHED_ALL_TECH_DATA'
 export const SELECTED_PROJECT = 'SELECTED_PROJECT'
 export const SELECTED_TECH = 'SELECTED_TECH'
 export const SELECTED_SUBJECT = 'SELECTED_SUBJECT'
+export const FETCHED_ALL_PORTFOLIO_TEXT = 'FETCHED_ALL_PORTFOLIO_TEXT'
 
 export interface sortedProjectDataT {
   status: number

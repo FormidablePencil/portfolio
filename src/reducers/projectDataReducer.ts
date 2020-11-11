@@ -3,6 +3,9 @@ import { FETCHED_ALL_PROJECT_DATA } from "../actions/types"
 export interface projectDataT {
   title: string
   description: string
+  links: any
+  showInPortfolio: any
+  video: any
   gitRepo: {
     frontend: string
     server: string
@@ -16,12 +19,7 @@ export interface projectDataT {
   type: string
   _id: number
   showInPorfolio: boolean
-  images: {
-    [index: number]: string
-    //fuction
-    map?: any
-    length?: any
-  }
+  images: any
 }
 const initialState = []
 
