@@ -2,8 +2,6 @@ import { useState, useRef } from "react"
 import { useSpring, useChain } from "react-spring"
 import { viewingOnMobileDimensions } from "../components/landingPageComps/Intro"
 
-
-
 function useDeviceTypeViewing() {
   const [isMobile, setIsMobile] = useState(viewingOnMobileDimensions().height ? true : false)
 

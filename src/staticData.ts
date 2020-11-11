@@ -1,4 +1,7 @@
 
+export const projectsToShowcase = ['Emoji Tack Toes', 'Simple Pokedex', 'My Bubble']
+
+
 const imageUri = [
   {
     src: require('./assets/techLogo/logo.svg'),
