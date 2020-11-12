@@ -1,5 +1,5 @@
 
-export const projectsToShowcase = ['Emoji Tack Toes', 'Simple Pokedex', 'My Bubble']
+export const projectsToShowcase = ['Emoji Tack Toes', 'Simple Pokedex', "Cinematographer's portfollio"]
 
 
 const imageUri = [

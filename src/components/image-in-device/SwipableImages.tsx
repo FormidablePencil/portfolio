@@ -6,9 +6,15 @@ import "slick-carousel/slick/slick-theme.css";
 const Slider = React.lazy(() => import("react-slick"))
 const MemoizedSlider = memo(Slider)
 
+interface T {
+  contentStyles: { imagesStyles: string, swipeableContainerStyles: string },
+  images,
+  showMobileImages,
+  autoPlay
+}
 function SwipableImages(props) {
-  const { projectContent, showMobileImages, autoPlay } = props
-  const classes = useStyles();
+  const { contentStyles, images, showMobileImages, autoPlay }: T = props
+  // const classes = useStyles();
 
   const settings = {
     dots: false,
@@ -21,20 +27,19 @@ function SwipableImages(props) {
 
   const ImageComp = ({ imageProps }) => <img
     key={imageProps.url}
-    className={classes.imageStyles}
-    src={projectContent.images && imageProps.url}
+    className={contentStyles.imagesStyles}
+    src={images && imageProps.url}
     alt='application' />
 
 
-  if (!projectContent)
+  if (!images)
     return null
   return (
-    <div
-      style={{ position: "absolute", width: '4.9em' }}>
+    <div className={contentStyles.swipeableContainerStyles}>
       <Suspense fallback={<div> kayy</div>}>
         <MemoizedSlider
           {...settings}>
-          {projectContent.images.map(imageProps => {
+          {images.map(imageProps => {
             switch (true) {
               case imageProps.device === 'mobile' && showMobileImages:
               case imageProps.device === 'web' && !showMobileImages:

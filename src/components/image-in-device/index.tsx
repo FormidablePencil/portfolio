@@ -3,30 +3,35 @@ import DeviceFrameAndImg from './DeviceFrameAndImg'
 import SwipableImages from './SwipableImages'
 
 function ImageInDevice({
-  projectData,
+  images,
   swipable,
   autoPlay,
   indexOfImageIfNotSwipable,
+  deviceType,
 }: {
-  projectData: projectDataTBit,
+  images: imagesT | void,
   swipable: boolean,
   autoPlay?: boolean,
   indexOfImageIfNotSwipable: number
+  deviceType: 'mobile' | 'web'
 }) {
-  return (
-    <DeviceFrameAndImg
-      indexOfImage={indexOfImageIfNotSwipable}
-      projectContent={projectData}
-    >
-      {swipable &&
-        <SwipableImages
-          autoPlay={autoPlay}
-          projectContent={projectData}
-        />
-      }
-    </DeviceFrameAndImg>
-  )
+  if (!images || !images[0])
+    return null
+  else
+    return (
+      <>
+        <DeviceFrameAndImg
+          deviceType={deviceType}
+          indexOfImage={indexOfImageIfNotSwipable}
+          images={images}
+        >
+          {swipable && <SwipableImages autoPlay={autoPlay} images={images} />}
+        </DeviceFrameAndImg>
+      </>
+    )
 }
+
+export interface imagesT { [index: number]: { device: string, url: string } }
 
 export interface projectDataTBit {
   title: string

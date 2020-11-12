@@ -4,8 +4,8 @@ import SwipeableViews from 'react-swipeable-views';
 
 const Project = ({ isMobile, images }) => {
   const [imageIndex, setImageIndex] = useState(0)
-  const frameClassName = isMobile ? 'smartphoneFrame noselect' : 'desktopFrame noselect'
-  const imageClassName = isMobile ? 'smartphoneImage noselect' : 'desktopImage noselect'
+  const frameClassName = isMobile ? 'smartphoneFrame' : 'desktopFrame'
+  const imageClassName = isMobile ? 'smartphoneImage' : 'desktopImage'
   const frame = isMobile ? require('../../assets/galaxys8Frame.png') : require('../../assets/macbookFrame.png')
   const imageSwitchingArrowMargin = isMobile ? '.6em' : '-.25em'
 
