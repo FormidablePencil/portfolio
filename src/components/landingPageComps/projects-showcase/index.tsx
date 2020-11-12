@@ -13,7 +13,8 @@ const { innerWidth } = window
 
 function ProjectsShowcase() {
   const [swipableViewsIndex, setSwipableViewsIndex] = useState(0)
-  const { deviceTypeMobileTranstionAnim, deviceTypeDesktopTranstionAnim, changeDeviceType, isMobile } = useDeviceTypeViewing()
+  /* //~ refractor this */
+  const { changeDeviceType, isMobile } = useDeviceTypeViewing()
   const sectionRef = useRef(null)
   const { isIntersecting } = useOnScreen(sectionRef, 'projShowcase')
   const animOpacity = useSpring({
@@ -31,13 +32,14 @@ function ProjectsShowcase() {
 
 
 
-  const BtnsAtTop = () => <>
-    <SwitchDeviceTypeBtns onClickHandler={onClickHandlerTypeBtns} isMobile={isMobile} />
-    <SwitchProjectBtns
-      swipableViewsIndex={swipableViewsIndex}
-      onClickNavProjects={onClickNavProjects}
-      lengthOfProjectsRendered={projectsToShowcase.length} />
-  </>
+  const BtnsAtTop = () =>
+    <>
+      <SwitchDeviceTypeBtns onClickHandler={onClickHandlerTypeBtns} isMobile={isMobile} />
+      <SwitchProjectBtns
+        swipableViewsIndex={swipableViewsIndex}
+        onClickNavProjects={onClickNavProjects}
+        lengthOfProjectsRendered={projectsToShowcase.length} />
+    </>
 
   const LearnMoreBtn = () =>
     <Button

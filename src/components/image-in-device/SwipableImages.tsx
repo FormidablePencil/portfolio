@@ -1,5 +1,4 @@
 import React, { memo, Suspense } from 'react'
-import { makeStyles } from '@material-ui/core';
 import "slick-carousel/slick/slick.css";
 import "slick-carousel/slick/slick-theme.css";
 
@@ -53,21 +52,5 @@ function SwipableImages(props) {
     </div>
   )
 }
-
-
-const useStyles = makeStyles(() => ({
-  imageContainer: {
-    // width: '10em',
-    // height: '10em',
-  },
-  imageStyles: {
-    objectFit: 'contain',
-    objectPosition: 'center',
-    marginTop: '5px',
-    height: '10em',
-    width: '4.9em',
-    overflow: 'hidden',
-  },
-}));
 
 export default SwipableImages

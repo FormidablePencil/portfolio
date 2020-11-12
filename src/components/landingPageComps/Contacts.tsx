@@ -1,5 +1,4 @@
 import React, { useRef, useState } from 'react'
-import { Button, TextField } from '@material-ui/core'
 import { useSpring, animated } from 'react-spring'
 import useOnScreen from '../../hooks/useOnScreen'
 import { customAnimConfig } from '../../staticData'
@@ -7,7 +6,6 @@ import { viewingOnMobileDimensions } from './Intro'
 import { rootReducerT } from '../../store'
 import { useSelector } from 'react-redux'
 import CopyToClipboard from 'react-copy-to-clipboard';
-import { setInterval } from 'timers'
 
 
 const { innerWidth } = window
@@ -16,7 +14,6 @@ function Contacts() {
   const { contacts } = useSelector((state: rootReducerT) => state.protfolioTextContent)
   const [copiedText, setCopiedText] = useState(false)
 
-  const message = 'Message....'
   const sectionRef = useRef(null)
   const { isIntersecting } = useOnScreen(sectionRef, 'contacts', false, '-200px')
   const animOpacity = useSpring({

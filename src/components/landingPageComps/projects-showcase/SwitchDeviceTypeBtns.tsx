@@ -7,9 +7,9 @@ const SwitchDeviceTypeBtns = ({ isMobile, onClickHandler }) => {
     <div className='switchDeviceTypeBtns'
       onClick={onClickHandler}>
       <BsPhone
-        color={isMobile ? 'white' : 'grey'} size={40} style={{ margin: '0 0 1em 1em', zIndex: 20 }} />
+        color={!isMobile ? 'white' : 'grey'} size={40} style={{ margin: '0 0 1em 1em', zIndex: 20 }} />
       <AiOutlineDesktop
-        color={!isMobile ? 'white' : 'grey'} size={40} style={{ margin: '0 0 0 1em', zIndex: 200 }} />
+        color={isMobile ? 'white' : 'grey'} size={40} style={{ margin: '0 0 0 1em', zIndex: 200 }} />
     </div>
   )
 }

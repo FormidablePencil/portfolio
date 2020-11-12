@@ -30,7 +30,7 @@ const Intro = () => {
       <animated.div className="banner" style={propsBannerAnim}>
         <animated.div className="textContainer" style={propsParagraphAnim}>
           {intro &&
-            <p>
+            <div>
               <p>
                 {intro[0]}
               </p>
@@ -40,7 +40,7 @@ const Intro = () => {
               <p>
                 {intro[2]}
               </p>
-            </p>
+            </div>
           }
         </animated.div>
       </animated.div>
