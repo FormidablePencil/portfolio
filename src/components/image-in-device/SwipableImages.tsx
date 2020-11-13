@@ -36,8 +36,7 @@ function SwipableImages(props) {
   return (
     <div className={contentStyles.swipeableContainerStyles}>
       <Suspense fallback={<div> kayy</div>}>
-        <MemoizedSlider
-          {...settings}>
+        <MemoizedSlider {...settings}>
           {images.map(imageProps => {
             switch (true) {
               case imageProps.device === 'mobile' && showMobileImages:

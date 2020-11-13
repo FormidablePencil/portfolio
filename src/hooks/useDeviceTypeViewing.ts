@@ -1,11 +1,25 @@
-import { useState, useRef } from "react"
+import { useState, useRef, useEffect } from "react"
 import { useSpring, useChain } from "react-spring"
 import { viewingOnMobileDimensions } from "../components/landingPageComps/Intro"
 
-function useDeviceTypeViewing() {
+function useDeviceTypeViewing({ swipableViewsIndex, imagesForWhatDevices }) {
   const [isMobile, setIsMobile] = useState(viewingOnMobileDimensions().height ? true : false)
 
-  const changeDeviceType = () => setIsMobile(prev => !prev)
+  const changeDeviceType = () => {
+    if (imagesForWhatDevices[swipableViewsIndex] === 'both')
+      setIsMobile(prev => !prev)
+  }
+
+  useEffect(() => {
+    if (imagesForWhatDevices[swipableViewsIndex] === 'both')
+      return
+    else if (imagesForWhatDevices[swipableViewsIndex] === 'mobile')
+      setIsMobile(true)
+    else if (imagesForWhatDevices[swipableViewsIndex] === 'desktop')
+      setIsMobile(false)
+
+  }, [swipableViewsIndex])
+
   const desktopAnim = useRef(null)
   const deviceTypeMobileTranstionAnim = useSpring({
     ref: desktopAnim,
