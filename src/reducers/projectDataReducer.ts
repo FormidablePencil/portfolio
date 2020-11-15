@@ -21,7 +21,7 @@ export interface projectDataT {
   showInPorfolio: boolean
   images: any
 }
-const initialState = []
+const initialState: projectDataT[] = []
 
 export default (state: projectDataT[] = initialState, { type, payload }) => {
   switch (type) {

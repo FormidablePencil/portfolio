@@ -1,4 +1,4 @@
-import React, { useRef } from 'react'
+import React, { memo, useRef } from 'react'
 import { animated, useTrail, useSpring } from "react-spring";
 import { customAnimConfig } from '../../staticData';
 import useOnScreen from '../../hooks/useOnScreen';
@@ -94,7 +94,7 @@ const TrailTech = ({
   )
 }
 
-export default TechnologiesShowcase
+export default memo(TechnologiesShowcase)
 
 
 

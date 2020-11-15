@@ -1,5 +1,4 @@
 import React, { useRef } from 'react'
-import profile from '../../assets/images/self.jpg';
 import useOnScreen from '../../hooks/useOnScreen';
 import { useSpring, animated } from 'react-spring';
 import { customAnimConfig } from '../../staticData';
@@ -28,9 +27,6 @@ function BriefBio() {
       { height: innerHeight * 1.5, ...animOpacity }
     )}
      className='brief-bio-section'>
-      <div className='imgFrame'>
-        <img className="img" alt='profile' src={profile} />
-      </div>
       <div ref={sectionRef} className='textContainer'>
         <p className='name'>Dennis Aleksandrov</p>
         <p className='paragraph'>

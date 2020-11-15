@@ -9,7 +9,6 @@ function App() {
 
   return (
     <div className='backgroundImg'>
-      <div className="bgTint" />
       <Provider store={store}>
           <LandingPage />
       </Provider>
