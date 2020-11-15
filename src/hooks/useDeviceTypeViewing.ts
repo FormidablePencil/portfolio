@@ -17,7 +17,7 @@ function useDeviceTypeViewing({ swipableViewsIndex, imagesForWhatDevices }) {
       setIsMobile(true)
     else if (imagesForWhatDevices[swipableViewsIndex] === 'desktop')
       setIsMobile(false)
-
+    // eslint-disable-next-line
   }, [swipableViewsIndex])
 
   const desktopAnim = useRef(null)
