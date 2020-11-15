@@ -19,30 +19,39 @@
   object-fit: contain
   position: relative
 
+$mobileWidthImg: 4.15em
+
 .mobileImg
   object-fit: contain
   object-position: 50% 50%
   margin-top: 5px
   height: 9.5em
-  width: 4.2em
+  width: $mobileWidthImg
   overflow: hidden
 
 .webImg
-  // background: black
-  object-fit: contain
-  object-position: center
-  // height: 9em
+  object-fit: cover
+  object-position: 100% 100%
+  height: 100%
   width: 9em
   overflow: hidden
 
 .swipeableContainerMobile
-  margin-top: -3px
+  top: -1px
   position: absolute
-  // overflow: hidden
-  width: 4.2em
+  width: $mobileWidthImg
   height: 10em
 
 .swipeableContainerDesktop
-  margin-top: -1px
+  top: 8px
   position: absolute
   width: 9em
+
+.black-mobile-element
+  top: 10px
+  height: 8.9em
+  width: $mobileWidthImg
+  background: black
+  overflow: hidden
+  position: absolute
+  z-index: -10

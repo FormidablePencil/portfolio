@@ -41,12 +41,15 @@ function DeviceFrameAndImg({
           } : {}}
       >
         {children ? childrenWithProps :
-          <LazyLoadImage
-            delayTime={3000}
-            className={contentStyles.imagesStyles}
-            src={images && images[indexOfImage]?.url}
-            alt='application'
-          />
+          <div className={contentStyles.swipeableContainerStyles}>
+            <BlackMobileBgElement />
+            <LazyLoadImage
+              delayTime={3000}
+              className={contentStyles.imagesStyles}
+              src={images && images[indexOfImage]?.url}
+              alt='application'
+            />
+          </div>
         }
         <img
           className={frameImgStyles}
@@ -57,5 +60,10 @@ function DeviceFrameAndImg({
   }
   else return null
 }
+
+export const BlackMobileBgElement = () =>
+  <div className="black-mobile-element" />
+
+
 
 export default DeviceFrameAndImg

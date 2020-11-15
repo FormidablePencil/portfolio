@@ -30,10 +30,7 @@ function MapProjects({ setImagesForWhatDevices, setSwipableViewsIndex, viewingMo
     className: 'swipeable-view',
     draggable: false,
     ref: (ref) => sliderRef.current = ref,
-    afterChange: (index) => {
-      console.log(index, 'wtf')
-      setSwipableViewsIndex(index)
-    }
+    afterChange: (index) => setSwipableViewsIndex(index)
     // appendDots
   }
 
@@ -84,11 +81,12 @@ function MapProjects({ setImagesForWhatDevices, setSwipableViewsIndex, viewingMo
                       ? 'mobile-image-in-device-display-true'
                       : 'mobile-image-in-device-display-none'
                     }`}>
+                    {/* black-mobile-element */}
                     <ImageInDevice
                       images={filterImagesForSpecifiedDevice(project, 'mobile')}
                       deviceType={'mobile'}
-                      swipable={true}
-                      autoPlay={true}
+                      swipable={false}
+                      autoPlay={false}
                       indexOfImageIfNotSwipable={0}
                     />
                   </div>

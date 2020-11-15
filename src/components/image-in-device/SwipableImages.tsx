@@ -1,6 +1,7 @@
 import React, { memo, Suspense } from 'react'
 import "slick-carousel/slick/slick.css";
 import "slick-carousel/slick/slick-theme.css";
+import { BlackMobileBgElement } from './DeviceFrameAndImg';
 
 const Slider = React.lazy(() => import("react-slick"))
 const MemoizedSlider = memo(Slider)
@@ -24,24 +25,28 @@ function SwipableImages(props) {
     slidesToScroll: 1,
   }
 
-  const ImageComp = ({ imageProps }) => <img
-    key={imageProps.url}
-    className={contentStyles.imagesStyles}
-    src={images && imageProps.url}
-    alt='application' />
+  const ImageComp = ({ imageProps }) =>
+    <img
+      key={imageProps.url}
+      className={contentStyles.imagesStyles}
+      src={images && imageProps.url}
+      alt='application' />
 
 
   if (!images)
     return null
   return (
     <div className={contentStyles.swipeableContainerStyles}>
-      <Suspense fallback={<div> kayy</div>}>
+      <Suspense fallback={<div>kayy</div>}>
         <MemoizedSlider {...settings}>
           {images.map(imageProps => {
             switch (true) {
               case imageProps.device === 'mobile' && showMobileImages:
               case imageProps.device === 'web' && !showMobileImages:
-                return <ImageComp key={imageProps} imageProps={imageProps} />
+                return <>
+                  <BlackMobileBgElement />
+                  <ImageComp key={imageProps} imageProps={imageProps} />
+                </>
               default:
                 return null
             }
