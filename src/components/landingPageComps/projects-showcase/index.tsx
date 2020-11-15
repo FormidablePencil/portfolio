@@ -36,7 +36,7 @@ function ProjectsShowcase() {
 
   const LearnMoreLink = () =>
     <div className='learnMoreLink'>
-      <a href='sdsd'>Checkout more projects and details</a>
+      <a href='sdsd'>Checkout more details and projects</a>
     </div>
 
 
