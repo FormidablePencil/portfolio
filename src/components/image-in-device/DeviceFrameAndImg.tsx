@@ -1,5 +1,4 @@
 import React, { Children, cloneElement } from 'react'
-import { IoMdArrowDropleft, IoMdArrowDropright } from 'react-icons/io';
 import { LazyLoadImage } from 'react-lazy-load-image-component';
 import { imagesT } from '.';
 
@@ -46,7 +45,6 @@ function DeviceFrameAndImg({
 
           {children ? childrenWithProps :
             <div className={contentStyles.swipeableContainerStyles}>
-              <BlackMobileBgElement />
               <LazyLoadImage
                 delayTime={3000}
                 className={contentStyles.imagesStyles}
@@ -67,10 +65,5 @@ function DeviceFrameAndImg({
   }
   else return null
 }
-
-export const BlackMobileBgElement = () =>
-  <div className="black-mobile-element" />
-
-
 
 export default DeviceFrameAndImg

@@ -1,6 +1,5 @@
 .container
   position: relative
-  width: 100%
   height: 100%
   display: flex
   justify-content: center
@@ -24,10 +23,11 @@
 $mobileWidthImg: 4.15em
 
 .mobileImg
+  background: black
   object-fit: contain
   object-position: 50% 50%
-  margin-top: 5px
-  height: 9.5em
+  margin-top: 10px
+  height: 8.9em
   width: $mobileWidthImg
   overflow: hidden
 
@@ -49,11 +49,4 @@ $mobileWidthImg: 4.15em
   position: absolute
   width: 9em
 
-.black-mobile-element
-  top: 10px
-  height: 8.9em
-  width: $mobileWidthImg
-  background: black
-  overflow: hidden
-  position: absolute
-  z-index: -10
+// show message comp when hover over project images

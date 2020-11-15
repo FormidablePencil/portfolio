@@ -1,7 +1,6 @@
 import React, { memo, Suspense } from 'react'
 import "slick-carousel/slick/slick.css";
 import "slick-carousel/slick/slick-theme.css";
-import { BlackMobileBgElement } from './DeviceFrameAndImg';
 
 const Slider = React.lazy(() => import("react-slick"))
 const MemoizedSlider = memo(Slider)
@@ -45,7 +44,6 @@ function SwipableImages(props) {
                 case imageProps.device === 'mobile' && showMobileImages:
                 case imageProps.device === 'web' && !showMobileImages:
                   return <>
-                    <BlackMobileBgElement />
                     <ImageComp key={imageProps} imageProps={imageProps} />
                   </>
                 default:
