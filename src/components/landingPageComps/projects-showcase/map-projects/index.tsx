@@ -29,6 +29,7 @@ function MapProjects({ setImagesForWhatDevices, setSwipableViewsIndex, viewingMo
     slidesToScroll: 1,
     className: 'swipeable-view',
     draggable: false,
+    swipe: false,
     ref: (ref) => sliderRef.current = ref,
     afterChange: (index) => setSwipableViewsIndex(index)
   }

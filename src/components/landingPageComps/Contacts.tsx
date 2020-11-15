@@ -2,16 +2,16 @@ import React, { useRef, useState } from 'react'
 import { useSpring, animated } from 'react-spring'
 import useOnScreen from '../../hooks/useOnScreen'
 import { customAnimConfig } from '../../staticData'
-import { viewingOnMobileDimensions } from './Intro'
 import { rootReducerT } from '../../store'
 import { useSelector } from 'react-redux'
 import CopyToClipboard from 'react-copy-to-clipboard';
+import { viewingOnMobileDimensions } from '../../hooks/useIntroBanner'
 
 
 const { innerWidth } = window
 
 function Contacts() {
-  const { contacts } = useSelector((state: rootReducerT) => state.protfolioTextContent)
+  const contacts = useSelector((state: rootReducerT) => state.protfolioTextContent.contacts)
   const [copiedText, setCopiedText] = useState(false)
 
   const sectionRef = useRef(null)

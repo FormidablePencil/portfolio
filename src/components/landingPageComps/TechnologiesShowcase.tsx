@@ -2,28 +2,27 @@ import React, { useRef } from 'react'
 import { animated, useTrail, useSpring } from "react-spring";
 import { customAnimConfig } from '../../staticData';
 import useOnScreen from '../../hooks/useOnScreen';
-import { viewingOnMobileDimensions } from './Intro';
 import { Tooltip } from '@material-ui/core';
 import { useSelector } from 'react-redux';
 import { rootReducerT } from '../../store';
 import { techDataT } from '../../reducers/techDataReducer';
 import generateTechDataForCols from '../../functions/generateTechDataForCols';
+import { viewingOnMobileDimensions } from '../../hooks/useIntroBanner';
 
 const { innerWidth } = window
 
 function TechnologiesShowcase() {
   const techDataCollection = useSelector((state: rootReducerT) => state.techDataCollection)
   const protfolioTextContent = useSelector((state: rootReducerT) => state.protfolioTextContent)
-  const generatedTechDataForCols = generateTechDataForCols(techDataCollection, protfolioTextContent.techToShowcase)
   const sectionRef = useRef(null)
   const { isIntersecting } = useOnScreen(sectionRef, 'techShowcase', false, '-200px')
-
+  const generatedTechDataForCols = generateTechDataForCols(techDataCollection, protfolioTextContent.techToShowcase)
   const opacityProps = useSpring({
     from: { opacity: 0 },
     to: { opacity: isIntersecting || viewingOnMobileDimensions().height ? 1 : 0 },
     config: customAnimConfig,
   })
-  
+
   return (
     <>
       <animated.div
@@ -31,10 +30,10 @@ function TechnologiesShowcase() {
         className='tech-section'>
         <div className='techShowcase'>
           <div className='leftCol'>
-            <TrailTech isIntersecting={isIntersecting} leftDirection={false} delay={500} generatedTechDataForCols={generatedTechDataForCols?.[0] ?? []} />
+            <TrailTech isIntersecting={isIntersecting} delay={500} generatedTechDataForCols={generatedTechDataForCols?.[0] ?? []} />
           </div>
           <div className='leftCol'>
-            <TrailTech isIntersecting={isIntersecting} leftDirection={false} delay={700} generatedTechDataForCols={generatedTechDataForCols?.[1] ?? []} />
+            <TrailTech isIntersecting={isIntersecting} delay={700} generatedTechDataForCols={generatedTechDataForCols?.[1] ?? []} />
           </div>
           <animated.div className='midTech' style={opacityProps}>
             <a href='my-bubble' className='remove-underline'>
@@ -55,10 +54,10 @@ function TechnologiesShowcase() {
             </a>
           </animated.div>
           <div className='rightCol'>
-            <TrailTech isIntersecting={isIntersecting} leftDirection={true} delay={700} generatedTechDataForCols={generatedTechDataForCols?.[2] ?? []} />
+            <TrailTech isIntersecting={isIntersecting} delay={700} generatedTechDataForCols={generatedTechDataForCols?.[2] ?? []} />
           </div>
           <div className='rightCol'>
-            <TrailTech isIntersecting={isIntersecting} leftDirection={true} delay={500} generatedTechDataForCols={generatedTechDataForCols?.[3] ?? []} />
+            <TrailTech isIntersecting={isIntersecting} delay={500} generatedTechDataForCols={generatedTechDataForCols?.[3] ?? []} />
           </div>
         </div>
       </animated.div>
@@ -69,12 +68,10 @@ function TechnologiesShowcase() {
 const TrailTech = ({
   generatedTechDataForCols,
   delay,
-  leftDirection,
   isIntersecting
 }: {
   generatedTechDataForCols: techDataT[],
   delay,
-  leftDirection,
   isIntersecting
 }) => {
 

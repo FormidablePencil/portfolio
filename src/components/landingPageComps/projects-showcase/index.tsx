@@ -3,23 +3,21 @@ import { Button } from '@material-ui/core';
 import { customAnimConfig } from '../../../staticData';
 import useOnScreen from '../../../hooks/useOnScreen';
 import { useSpring, animated } from 'react-spring';
-import { viewingOnMobileDimensions } from '../Intro';
 import useDeviceTypeViewing from '../../../hooks/useDeviceTypeViewing';
 import SwitchDeviceTypeBtns from './SwitchDeviceTypeBtns';
 import MapProjects from './map-projects';
 import SwitchProjectBtns from './SwitchProjectBtns';
+import { viewingOnMobileDimensions } from '../../../hooks/useIntroBanner';
 
 const { innerWidth } = window
 
 function ProjectsShowcase() {
   const [swipableViewsIndex, setSwipableViewsIndex] = useState(0)
-  const [imagesForWhatDevices, setImagesForWhatDevices] = useState({})
   // 'web' | 'mobile' | 'both' | ''
-  /* //~ refractor this */
+  const [imagesForWhatDevices, setImagesForWhatDevices] = useState({})
   const { changeDeviceType, isMobile } = useDeviceTypeViewing({ swipableViewsIndex, imagesForWhatDevices })
   const sectionRef = useRef(null)
   const sliderRef: any = useRef(null)
-
   const { isIntersecting } = useOnScreen(sectionRef, 'projShowcase')
   const animOpacity = useSpring({
     from: { opacity: 0, },

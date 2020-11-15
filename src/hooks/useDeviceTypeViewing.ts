@@ -1,6 +1,6 @@
 import { useState, useRef, useEffect } from "react"
 import { useSpring, useChain } from "react-spring"
-import { viewingOnMobileDimensions } from "../components/landingPageComps/Intro"
+import { viewingOnMobileDimensions } from "./useIntroBanner"
 
 function useDeviceTypeViewing({ swipableViewsIndex, imagesForWhatDevices }) {
   const [isMobile, setIsMobile] = useState(viewingOnMobileDimensions().height ? true : false)

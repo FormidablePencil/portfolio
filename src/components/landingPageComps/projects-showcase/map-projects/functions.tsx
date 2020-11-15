@@ -3,6 +3,9 @@ import { projectDataT } from "../../../../reducers/projectDataReducer"
 export interface whatTypeOfImagesAvailableRefT {
   current: { [index: number]: 'both' | 'mobile' | 'desktop' }
 }
+
+
+
 const updateImagesAvaiableForWhatDevices = (
   {
     whatTypeOfImagesAvailableRef,
@@ -19,7 +22,6 @@ const updateImagesAvaiableForWhatDevices = (
     isLastImage,
     setImagesForWhatDevices,
   }) => {
-
   switch (true) {
     case (desktopImages.length > 0 && mobileImages.length > 0):
       whatTypeOfImagesAvailableRef.current[index] = 'both'
@@ -31,14 +33,15 @@ const updateImagesAvaiableForWhatDevices = (
       whatTypeOfImagesAvailableRef.current[index] = 'mobile'
       break;
   }
-
   if (isLastImage)
     setImagesForWhatDevices(whatTypeOfImagesAvailableRef.current)
 }
 
 
+
 const filterImagesForSpecifiedDevice = (project: projectDataT, device) =>
   project.images.filter(image => image.device === device)
+
 
 
 interface T { projectDataCollection: projectDataT[], projectsToShowcase: { [key: number]: string, filter: any } }
@@ -48,6 +51,7 @@ const generateProjectDataToRender = ({ projectDataCollection, projectsToShowcase
   )[0])
 
 
+  
 export {
   updateImagesAvaiableForWhatDevices,
   filterImagesForSpecifiedDevice,

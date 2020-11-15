@@ -1,29 +1,18 @@
 %vhWorkableOnAllBrowsers
   height: 100vh
-  // min-height: 100vh 
-  // min-height: -webkit-fill-available //* next projects try this hack
+//   background-size: -webkit-fill-available
 
 .backgroundImg
-  background-image: url(../../../assets/flowersbgbgBluredDark.png)
-  background-repeat: no-repeat
-  background-size: 8000px
-  background-size: -webkit-fill-available
-  object-fit: contain
-.backgroundImg2
-  top: 0
-  bottom: 0
-  z-index: -2
-  width: 100vw
-  z-index: -100
-  margin: 0
-  position: fixed
-  object-fit: cover
-  -moz-background-size: cover
-  background: url(../../../assets/flowerPatternEditted.jpg) no-repeat fixed
-  @extend %vhWorkableOnAllBrowsers
+  background-image: url(../../../assets/images/flowersbgbgBluredDark.png)
+  background-position: center
+  z-index: -1
+  background-size: cover
+  height: 100vh
+  overflow: scroll
 
 .landing-page
   z-index: 5
+  height: 100vh
 
   p
     color: $textLight
@@ -41,8 +30,6 @@
     top: 0
     @media only screen and (max-width: 500px)
       height: $bannerHeight * 3
-      // margin: 10em 0 10em 0
-    // min-height: -webkit-fill-availablea
 
   @import ./bioSection
   .brief-bio-section
@@ -54,7 +41,6 @@
       flex-direction: column
       flex: 1
       align-items: center
-      // justify-content: flex-end
       justify-content: center
 
   @import ./contactsSection
