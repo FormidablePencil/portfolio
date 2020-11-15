@@ -34,40 +34,6 @@ function MapProjects({ setImagesForWhatDevices, setSwipableViewsIndex, viewingMo
   }
 
   // swipableViewsIndex into slider, remove the selecting
-  const ImageInDeviceDesktop = ({ project }) =>
-    <div className={`
-        projectInFrame-container
-        desktop-image-in-device
-        ${!viewingMobile
-        ? 'desktop-image-in-device-display-true'
-        : 'desktop-image-in-device-display-none'
-      }`}>
-      <ImageInDevice
-        images={filterImagesForSpecifiedDevice(project, 'web')}
-        deviceType={'web'}
-        swipable={true}
-        autoPlay={true}
-        indexOfImageIfNotSwipable={0}
-      />
-    </div>
-
-  const ImageInDeviceMobile = ({ project }) =>
-    <div className={`
-        projectInFrame-container
-        mobile-image-in-device
-        ${viewingMobile
-        ? 'mobile-image-in-device-display-true'
-        : 'mobile-image-in-device-display-none'
-      }`}>
-      <ImageInDevice
-        images={filterImagesForSpecifiedDevice(project, 'mobile')}
-        deviceType={'mobile'}
-        swipable={true}
-        autoPlay={true}
-        indexOfImageIfNotSwipable={0}
-      />
-    </div>
-
   return (
     <Suspense fallback={<div> kayy</div>}>
       <MemoizedSlider {...settings}>
@@ -86,10 +52,10 @@ function MapProjects({ setImagesForWhatDevices, setSwipableViewsIndex, viewingMo
             <div>
               <div className='project-images-container' key={project.title}>
                 {desktopImages[0] &&
-                  <ImageInDeviceDesktop project={project} />
+                  <ImageInDeviceDesktop viewingMobile={viewingMobile} project={project} />
                 }
                 {mobileImages[0] &&
-                  <ImageInDeviceMobile project={project} />
+                  <ImageInDeviceMobile viewingMobile={viewingMobile} project={project} />
                 }
               </div>
             </div>
@@ -99,5 +65,40 @@ function MapProjects({ setImagesForWhatDevices, setSwipableViewsIndex, viewingMo
     </Suspense >
   )
 }
+
+const ImageInDeviceDesktop = ({ project, viewingMobile }) =>
+  <div className={`
+      projectInFrame-container
+      desktop-image-in-device
+      ${!viewingMobile
+      ? 'desktop-image-in-device-display-true'
+      : 'desktop-image-in-device-display-none'
+    }`}>
+    <ImageInDevice
+      images={filterImagesForSpecifiedDevice(project, 'web')}
+      deviceType={'web'}
+      swipable={true}
+      autoPlay={true}
+      indexOfImageIfNotSwipable={0}
+    />
+  </div>
+
+const ImageInDeviceMobile = ({ project, viewingMobile }) =>
+  <div className={`
+      projectInFrame-container
+      mobile-image-in-device
+      ${viewingMobile
+      ? 'mobile-image-in-device-display-true'
+      : 'mobile-image-in-device-display-none'
+    }`}>
+    <ImageInDevice
+      images={filterImagesForSpecifiedDevice(project, 'mobile')}
+      deviceType={'mobile'}
+      swipable={true}
+      autoPlay={true}
+      indexOfImageIfNotSwipable={0}
+    />
+  </div>
+
 
 export default MapProjects

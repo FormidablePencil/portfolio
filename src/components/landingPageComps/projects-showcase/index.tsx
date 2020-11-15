@@ -1,4 +1,4 @@
-import React, { useState, useRef, useEffect } from 'react'
+import React, { useState, useRef } from 'react'
 import { Button } from '@material-ui/core';
 import { customAnimConfig } from '../../../staticData';
 import useOnScreen from '../../../hooks/useOnScreen';
@@ -27,37 +27,26 @@ function ProjectsShowcase() {
     config: customAnimConfig,
   })
 
-  const onClickNavProjects = ({ leftDirection }) =>
+  const onClickNavProjects = ({ leftDirection }) => {
     leftDirection
       ? sliderRef.current.slickPrev()
       : sliderRef.current.slickNext()
+  }
 
-  const onClickHandlerTypeBtns = () => changeDeviceType()
 
-  const BtnsAtTop = () =>
-    <>
-      <SwitchDeviceTypeBtns
-        whatIconsToDisplay={imagesForWhatDevices[swipableViewsIndex]}
-        onClickHandler={onClickHandlerTypeBtns}
-        isMobile={isMobile} />
-      <SwitchProjectBtns
-        onClickNavProjects={onClickNavProjects} />
-    </>
-
-  const LearnMoreBtn = () =>
-    <Button
-      variant='contained'
-      style={{ backgroundColor: 'rgba(161,42,255,.4)' }}
-      color="primary"
-      className='btnGoToDetailedPg'>
-      {'details -->'}
-    </Button>
+  const LearnMoreLink = () =>
+    <div className='learnMoreLink'>
+      <a href='sdsd'>Checkout more projects and details</a>
+    </div>
 
 
   return (
     <div style={viewingOnMobileDimensions({ height: '140vh', },)} className='project-section'>
       <animated.div ref={sectionRef} style={animOpacity} className="banner">
-        <BtnsAtTop />
+        <SwitchDeviceTypeBtns
+          whatIconsToDisplay={imagesForWhatDevices[swipableViewsIndex]}
+          onClickHandler={changeDeviceType}
+          isMobile={isMobile} />
 
         <MapProjects
           setImagesForWhatDevices={setImagesForWhatDevices}
@@ -66,7 +55,9 @@ function ProjectsShowcase() {
           viewingMobile={isMobile}
         />
 
-        <LearnMoreBtn />
+        <SwitchProjectBtns
+          onClickNavProjects={onClickNavProjects} />
+        <LearnMoreLink />
       </animated.div>
     </div>
   )

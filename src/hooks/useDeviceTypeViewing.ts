@@ -50,7 +50,8 @@ function useDeviceTypeViewing({ swipableViewsIndex, imagesForWhatDevices }) {
 
   return {
     isMobile, changeDeviceType,
-    deviceTypeMobileTranstionAnim, deviceTypeDesktopTranstionAnim
+    deviceTypeMobileTranstionAnim,
+    deviceTypeDesktopTranstionAnim,
   }
 
 }
