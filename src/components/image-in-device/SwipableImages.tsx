@@ -32,28 +32,30 @@ function SwipableImages(props) {
       src={images && imageProps.url}
       alt='application' />
 
-
   if (!images)
     return null
   return (
-    <div className={contentStyles.swipeableContainerStyles}>
-      <Suspense fallback={<div>kayy</div>}>
-        <MemoizedSlider {...settings}>
-          {images.map(imageProps => {
-            switch (true) {
-              case imageProps.device === 'mobile' && showMobileImages:
-              case imageProps.device === 'web' && !showMobileImages:
-                return <>
-                  <BlackMobileBgElement />
-                  <ImageComp key={imageProps} imageProps={imageProps} />
-                </>
-              default:
-                return null
-            }
-          })}
-        </MemoizedSlider>
-      </Suspense>
-    </div>
+    <>
+      {/* <NavBtn isMobile={true} next={true} /> */}
+      <div className={contentStyles.swipeableContainerStyles}>
+        <Suspense fallback={<div>kayy</div>}>
+          <MemoizedSlider {...settings}>
+            {images.map(imageProps => {
+              switch (true) {
+                case imageProps.device === 'mobile' && showMobileImages:
+                case imageProps.device === 'web' && !showMobileImages:
+                  return <>
+                    <BlackMobileBgElement />
+                    <ImageComp key={imageProps} imageProps={imageProps} />
+                  </>
+                default:
+                  return null
+              }
+            })}
+          </MemoizedSlider>
+        </Suspense>
+      </div>
+    </>
   )
 }
 

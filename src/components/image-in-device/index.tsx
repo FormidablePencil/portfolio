@@ -15,6 +15,7 @@ function ImageInDevice({
   indexOfImageIfNotSwipable: number
   deviceType: 'mobile' | 'web'
 }) {
+
   if (!images || !images[0])
     return null
   else

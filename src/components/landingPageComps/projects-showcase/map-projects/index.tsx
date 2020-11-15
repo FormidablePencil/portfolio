@@ -3,11 +3,14 @@ import { useSelector } from 'react-redux'
 import { rootReducerT } from '../../../../store'
 import ImageInDevice from '../../../image-in-device'
 import { projectsToShowcase } from '../../../../staticData';
-import { filterImagesForSpecifiedDevice, generateProjectDataToRender, updateImagesAvaiableForWhatDevices, whatTypeOfImagesAvailableRefT } from './functions'
-
+import {
+  filterImagesForSpecifiedDevice,
+  generateProjectDataToRender,
+  updateImagesAvaiableForWhatDevices,
+  whatTypeOfImagesAvailableRefT
+} from './functions'
 const Slider = React.lazy(() => import("react-slick"))
 const MemoizedSlider = memo(Slider)
-
 
 function MapProjects({ setImagesForWhatDevices, setSwipableViewsIndex, viewingMobile, sliderRef }) {
   const projectDataCollection = useSelector((state: rootReducerT) => state.projectDataCollection)
@@ -16,9 +19,6 @@ function MapProjects({ setImagesForWhatDevices, setSwipableViewsIndex, viewingMo
   const generatedProjectDataToRender = generateProjectDataToRender({
     projectDataCollection, projectsToShowcase
   })
-
-  // const AppInfo = ({ deviceType }) =>
-  //   <p className=''>{deviceType === 'mobile' ? 'React Native App' : 'React App'}</p>
 
   const settings = {
     dots: true,
@@ -31,19 +31,49 @@ function MapProjects({ setImagesForWhatDevices, setSwipableViewsIndex, viewingMo
     draggable: false,
     ref: (ref) => sliderRef.current = ref,
     afterChange: (index) => setSwipableViewsIndex(index)
-    // appendDots
   }
 
   // swipableViewsIndex into slider, remove the selecting
+  const ImageInDeviceDesktop = ({ project }) =>
+    <div className={`
+        projectInFrame-container
+        desktop-image-in-device
+        ${!viewingMobile
+        ? 'desktop-image-in-device-display-true'
+        : 'desktop-image-in-device-display-none'
+      }`}>
+      <ImageInDevice
+        images={filterImagesForSpecifiedDevice(project, 'web')}
+        deviceType={'web'}
+        swipable={true}
+        autoPlay={true}
+        indexOfImageIfNotSwipable={0}
+      />
+    </div>
+
+  const ImageInDeviceMobile = ({ project }) =>
+    <div className={`
+        projectInFrame-container
+        mobile-image-in-device
+        ${viewingMobile
+        ? 'mobile-image-in-device-display-true'
+        : 'mobile-image-in-device-display-none'
+      }`}>
+      <ImageInDevice
+        images={filterImagesForSpecifiedDevice(project, 'mobile')}
+        deviceType={'mobile'}
+        swipable={true}
+        autoPlay={true}
+        indexOfImageIfNotSwipable={0}
+      />
+    </div>
 
   return (
-    // <SwipeableViews index={swipableViewsIndex} className='swipeable-view'>
     <Suspense fallback={<div> kayy</div>}>
       <MemoizedSlider {...settings}>
         {generatedProjectDataToRender.map((project, index) => {
           let desktopImages = filterImagesForSpecifiedDevice(project, 'web')
           let mobileImages = filterImagesForSpecifiedDevice(project, 'mobile')
-
           updateImagesAvaiableForWhatDevices({
             setImagesForWhatDevices,
             whatTypeOfImagesAvailableRef,
@@ -55,41 +85,11 @@ function MapProjects({ setImagesForWhatDevices, setSwipableViewsIndex, viewingMo
           return (
             <div>
               <div className='project-images-container' key={project.title}>
-                {/* <AppInfo deviceType={project.type} /> */}
                 {desktopImages[0] &&
-                  <div className={`
-                      projectInFrame-container
-                      desktop-image-in-device
-                      ${!viewingMobile
-                      ? 'desktop-image-in-device-display-true'
-                      : 'desktop-image-in-device-display-none'
-                    }`}>
-                    <ImageInDevice
-                      images={filterImagesForSpecifiedDevice(project, 'web')}
-                      deviceType={'web'}
-                      swipable={true}
-                      autoPlay={true}
-                      indexOfImageIfNotSwipable={0}
-                    />
-                  </div>
+                  <ImageInDeviceDesktop project={project} />
                 }
                 {mobileImages[0] &&
-                  <div className={`
-                      projectInFrame-container
-                      mobile-image-in-device
-                      ${viewingMobile
-                      ? 'mobile-image-in-device-display-true'
-                      : 'mobile-image-in-device-display-none'
-                    }`}>
-                    {/* black-mobile-element */}
-                    <ImageInDevice
-                      images={filterImagesForSpecifiedDevice(project, 'mobile')}
-                      deviceType={'mobile'}
-                      swipable={false}
-                      autoPlay={false}
-                      indexOfImageIfNotSwipable={0}
-                    />
-                  </div>
+                  <ImageInDeviceMobile project={project} />
                 }
               </div>
             </div>
@@ -97,8 +97,6 @@ function MapProjects({ setImagesForWhatDevices, setSwipableViewsIndex, viewingMo
         })}
       </MemoizedSlider>
     </Suspense >
-    // </SwipeableViews>
-
   )
 }
 

@@ -1,4 +1,5 @@
 import React, { Children, cloneElement } from 'react'
+import { IoMdArrowDropleft, IoMdArrowDropright } from 'react-icons/io';
 import { LazyLoadImage } from 'react-lazy-load-image-component';
 import { imagesT } from '.';
 
@@ -32,30 +33,36 @@ function DeviceFrameAndImg({
 
   if (images) {
     return (
-      <div
-        className='container'
-        style={mobileContentDetailsSection ?
-          {
-            transform: 'scale(2)',
-            margin: '1em, 0em 1em, 0em'
-          } : {}}
-      >
-        {children ? childrenWithProps :
-          <div className={contentStyles.swipeableContainerStyles}>
-            <BlackMobileBgElement />
-            <LazyLoadImage
-              delayTime={3000}
-              className={contentStyles.imagesStyles}
-              src={images && images[indexOfImage]?.url}
-              alt='application'
-            />
-          </div>
-        }
-        <img
-          className={frameImgStyles}
-          src={deviceType === 'mobile' ? galaxyPhoneFrame : macbookFrame}
-          alt='frame' />
-      </div>
+      <>
+        <div
+          className='container'
+          style={mobileContentDetailsSection ?
+            {
+              transform: 'scale(2)',
+              margin: '1em, 0em 1em, 0em'
+            } : {}}
+        >
+          {/* <NavBtn isMobile={true} next={true} /> */}
+
+          {children ? childrenWithProps :
+            <div className={contentStyles.swipeableContainerStyles}>
+              <BlackMobileBgElement />
+              <LazyLoadImage
+                delayTime={3000}
+                className={contentStyles.imagesStyles}
+                src={images && images[indexOfImage]?.url}
+                alt='application'
+              />
+            </div>
+          }
+          <img
+            className={frameImgStyles}
+            src={deviceType === 'mobile' ? galaxyPhoneFrame : macbookFrame}
+            alt='frame' />
+          {/* <NavBtn isMobile={true} next={false} /> */}
+
+        </div>
+      </>
     )
   }
   else return null

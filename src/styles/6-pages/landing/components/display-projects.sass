@@ -17,24 +17,32 @@
   transform: scale(1.4) !important
   @media only screen and (max-width: 900px)
     transform: scale(2) !important
+    // position: absolute
 .desktop-image-in-device
   transform: scale(1.4) !important
   @media only screen and (max-width: 900px)
+    // position: absolute
     transform: scale(2) !important
 
 .mobile-image-in-device-display-none
   @media only screen and (max-width: 900px)
+    position: absolute
     opacity: 0
     transform: translate(-100px) scale(1.8) !important
+    transition-delay: 2s
     transition: transform 1s, opacity 1s
 
 .desktop-image-in-device-display-none
   @media only screen and (max-width: 900px)
     opacity: 0
+    position: absolute
     transform: translate(100px) scale(1.8) !important
     transition: transform 1s, opacity 1s
 .mobile-image-in-device-display-true, .desktop-image-in-device-display-true
   @media only screen and (max-width: 900px)
+    z-index: 10
     opacity: 1
     transform: translate(10px)
     transition: transform 1s 500ms, opacity 1s 500ms
+
+  // use css % media query and at the end change width to: 0
