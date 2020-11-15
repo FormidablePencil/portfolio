@@ -2,7 +2,6 @@ import React, { useRef } from 'react'
 import { animated, useTrail, useSpring } from "react-spring";
 import { customAnimConfig } from '../../staticData';
 import useOnScreen from '../../hooks/useOnScreen';
-import { Tooltip } from '@material-ui/core';
 import { useSelector } from 'react-redux';
 import { rootReducerT } from '../../store';
 import { techDataT } from '../../reducers/techDataReducer';
@@ -83,18 +82,13 @@ const TrailTech = ({
   else return (
     <>
       {trail.map((props, index) =>
-        <Tooltip
-          key={generatedTechDataForCols[index]._id}
-          placement='right'
-          title="Checkout my projects @ www.dennis-aleksandrov.my-bubble.com">
-          <a href='my-bubble' className='remove-underline'>
-            <animated.div
-              style={props}
-              className='imgContainer'>
-              <img src={generatedTechDataForCols[index].image} alt='js' />
-            </animated.div>
-          </a>
-        </Tooltip>
+        <a href='my-bubble' className='remove-underline'>
+          <animated.div
+            style={props}
+            className='imgContainer'>
+            <img src={generatedTechDataForCols[index].image} alt='js' />
+          </animated.div>
+        </a>
       )}
     </>
   )

@@ -1,5 +1,4 @@
 import React, { useState, useRef } from 'react'
-import { Button } from '@material-ui/core';
 import { customAnimConfig } from '../../../staticData';
 import useOnScreen from '../../../hooks/useOnScreen';
 import { useSpring, animated } from 'react-spring';
