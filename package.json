@@ -1,6 +1,6 @@
 {
   "name": "portfolio-project",
-  "homepage": "https://dennisaleksandrov.com",
+  "homepage": "https://www.dennisaleksandrov.com/",
   "version": "0.1.0",
   "private": true,
   "dependencies": {
@@ -24,10 +24,12 @@
     "react-spring": "^8.0.27",
     "redux": "^4.0.5",
     "redux-thunk": "^2.3.0",
+    "serve-build": "^0.1.0",
     "slick-carousel": "^1.8.1",
     "socket.io-client": "^3.0.1"
   },
   "scripts": {
+    "start-build-server": "serve-build",
     "start": "react-scripts start",
     "build": "react-scripts build",
     "test": "react-scripts test",
