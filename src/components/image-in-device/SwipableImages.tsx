@@ -1,9 +1,10 @@
 import React, { memo, Suspense } from 'react'
 import "slick-carousel/slick/slick.css";
 import "slick-carousel/slick/slick-theme.css";
+import TheSlider from "react-slick"
 
-const Slider = React.lazy(() => import("react-slick"))
-const MemoizedSlider = memo(Slider)
+// const Slider = React.lazy(() => import("react-slick"))
+// const TheSlider = memo(Slider)
 
 interface T {
   contentStyles: { imagesStyles: string, swipeableContainerStyles: string },
@@ -39,7 +40,7 @@ function SwipableImages(props) {
       {/* <NavBtn isMobile={true} next={true} /> */}
       <div className={contentStyles.swipeableContainerStyles}>
         <Suspense fallback={<div>kayy</div>}>
-          <MemoizedSlider {...settings}>
+          <TheSlider {...settings}>
             {images.map(imageProps => {
               switch (true) {
                 case imageProps.device === 'mobile' && showMobileImages:
@@ -51,7 +52,7 @@ function SwipableImages(props) {
                   return null
               }
             })}
-          </MemoizedSlider>
+          </TheSlider>
         </Suspense>
       </div>
     </>

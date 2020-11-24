@@ -1,6 +1,10 @@
 import React, { Children, cloneElement } from 'react'
 import { LazyLoadImage } from 'react-lazy-load-image-component';
 import { imagesT } from '.';
+import macbookFrame from './images/macbookFrame.png';
+import galaxyPhoneFrame from './images/galaxys8Frame.png';
+import './deviceInImage.sass';
+
 
 function DeviceFrameAndImg({
   indexOfImage,
@@ -15,8 +19,6 @@ function DeviceFrameAndImg({
   deviceType: string
   children?
 }) {
-  const macbookFrame = require('./images/macbookFrame.png')
-  const galaxyPhoneFrame = require('./images/galaxys8Frame.png')
   const contentStyles = {
     imagesStyles: deviceType === 'mobile' ? 'mobileImg' : 'webImg',
     swipeableContainerStyles: deviceType === 'mobile' ? 'swipeableContainerMobile' : 'swipeableContainerDesktop'

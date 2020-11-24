@@ -10,7 +10,7 @@ function App() {
   return (
     <div className='backgroundImg'>
       <Provider store={store}>
-          <LandingPage />
+        <LandingPage />
       </Provider>
     </div>
   );
