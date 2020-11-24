@@ -1,6 +1,7 @@
 import React from 'react'
 import { BsPhone } from 'react-icons/bs'
 import { AiOutlineDesktop } from 'react-icons/ai';
+import './index.sass';
 
 const SwitchDeviceTypeBtns = ({ whatIconsToDisplay, isMobile, onClickHandler }) => {
 

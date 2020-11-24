@@ -9,6 +9,7 @@ import {
   updateImagesAvaiableForWhatDevices,
   whatTypeOfImagesAvailableRefT
 } from './functions'
+import TransitionDevices from '../../../image-in-device/moreFeatures/transitionDevices';
 const Slider = React.lazy(() => import("react-slick"))
 const MemoizedSlider = memo(Slider)
 
@@ -53,10 +54,26 @@ function MapProjects({ setImagesForWhatDevices, setSwipableViewsIndex, viewingMo
             <div>
               <div className='project-images-container' key={project.title}>
                 {desktopImages[0] &&
-                  <ImageInDeviceDesktop viewingMobile={viewingMobile} project={project} />
+                  <TransitionDevices deviceType='desktop' show={!viewingMobile}>
+                    <ImageInDevice
+                      images={filterImagesForSpecifiedDevice(project, 'web')}
+                      deviceType={'web'}
+                      swipable={true}
+                      autoPlay={true}
+                      indexOfImageIfNotSwipable={0}
+                    />
+                  </TransitionDevices>
                 }
                 {mobileImages[0] &&
-                  <ImageInDeviceMobile viewingMobile={viewingMobile} project={project} />
+                  <TransitionDevices deviceType='mobile' show={viewingMobile}>
+                    <ImageInDevice
+                      images={filterImagesForSpecifiedDevice(project, 'mobile')}
+                      deviceType={'mobile'}
+                      swipable={true}
+                      autoPlay={true}
+                      indexOfImageIfNotSwipable={0}
+                    />
+                  </TransitionDevices>
                 }
               </div>
             </div>
@@ -67,39 +84,6 @@ function MapProjects({ setImagesForWhatDevices, setSwipableViewsIndex, viewingMo
   )
 }
 
-const ImageInDeviceDesktop = ({ project, viewingMobile }) =>
-  <div className={`
-      projectInFrame-container
-      desktop-image-in-device
-      ${!viewingMobile
-      ? 'desktop-image-in-device-display-true'
-      : 'desktop-image-in-device-display-none'
-    }`}>
-    <ImageInDevice
-      images={filterImagesForSpecifiedDevice(project, 'web')}
-      deviceType={'web'}
-      swipable={true}
-      autoPlay={true}
-      indexOfImageIfNotSwipable={0}
-    />
-  </div>
-
-const ImageInDeviceMobile = ({ project, viewingMobile }) =>
-  <div className={`
-      projectInFrame-container
-      mobile-image-in-device
-      ${viewingMobile
-      ? 'mobile-image-in-device-display-true'
-      : 'mobile-image-in-device-display-none'
-    }`}>
-    <ImageInDevice
-      images={filterImagesForSpecifiedDevice(project, 'mobile')}
-      deviceType={'mobile'}
-      swipable={true}
-      autoPlay={true}
-      indexOfImageIfNotSwipable={0}
-    />
-  </div>
 
 
 export default MapProjects
