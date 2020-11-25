@@ -3,7 +3,7 @@ import { customAnimConfig } from '../../../staticData';
 import useOnScreen from '../../../hooks/useOnScreen';
 import { useSpring, animated } from 'react-spring';
 import useDeviceTypeViewing from '../../../hooks/useDeviceTypeViewing';
-import SwitchDeviceTypeBtns from '../../image-in-device/moreFeatures/switchDeviceTypeBtns';
+import SwitchDeviceTypeBtns from '../../imageInDevice/moreFeatures/switchDeviceTypeBtns';
 import MapProjects from './map-projects';
 import SwitchProjectBtns from './SwitchProjectBtns';
 import { viewingOnMobileDimensions } from '../../../hooks/useIntroBanner';

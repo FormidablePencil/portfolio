@@ -1,7 +1,7 @@
 import React, { memo, Suspense, useRef } from 'react'
 import { useSelector } from 'react-redux'
 import { rootReducerT } from '../../../../store'
-import ImageInDevice from '../../../image-in-device'
+import ImageInDevice from '../../../imageInDevice/ImageInDevice'
 import { projectsToShowcase } from '../../../../staticData';
 import {
   filterImagesForSpecifiedDevice,
@@ -9,7 +9,7 @@ import {
   updateImagesAvaiableForWhatDevices,
   whatTypeOfImagesAvailableRefT
 } from './functions'
-import TransitionDevices from '../../../image-in-device/moreFeatures/transitionDevices';
+import TransitionDevices from '../../../imageInDevice/moreFeatures/transitionDevices';
 const Slider = React.lazy(() => import("react-slick"))
 const MemoizedSlider = memo(Slider)
 
