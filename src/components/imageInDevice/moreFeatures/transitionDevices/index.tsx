@@ -1,7 +1,8 @@
 import React from 'react'
 import './index.sass';
 
-const TransitionDevices = ({ children, deviceType, show }) =>
+interface T { children, deviceType: 'desktop' | 'mobile', show: boolean }
+const TransitionDevices = ({ children, deviceType, show }: T) =>
   <div className={`
       projectInFrame-container
       ${deviceType}-image-in-device

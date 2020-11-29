@@ -22,6 +22,7 @@ function MapProjects({ setImagesForWhatDevices, setSwipableViewsIndex, viewingMo
   })
 
   const settings = {
+    effect: "blur",
     dots: true,
     arrows: false,
     infinite: true,
@@ -56,7 +57,7 @@ function MapProjects({ setImagesForWhatDevices, setSwipableViewsIndex, viewingMo
                 {desktopImages[0] &&
                   <TransitionDevices deviceType='desktop' show={!viewingMobile}>
                     <ImageInDevice
-                      images={filterImagesForSpecifiedDevice(project, 'web')}
+                      images={desktopImages}
                       deviceType={'web'}
                       swipable={true}
                       autoPlay={true}
@@ -67,7 +68,7 @@ function MapProjects({ setImagesForWhatDevices, setSwipableViewsIndex, viewingMo
                 {mobileImages[0] &&
                   <TransitionDevices deviceType='mobile' show={viewingMobile}>
                     <ImageInDevice
-                      images={filterImagesForSpecifiedDevice(project, 'mobile')}
+                      images={mobileImages}
                       deviceType={'mobile'}
                       swipable={true}
                       autoPlay={true}
