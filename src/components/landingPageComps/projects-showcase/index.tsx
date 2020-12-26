@@ -33,7 +33,7 @@ function ProjectsShowcase() {
 
   const LearnMoreLink = () =>
     <div className='learnMoreLink'>
-      <a href='http://mybubble.dennisaleksandrov.com/projects'>Checkout more of my work</a>
+      <a href='http://mybubble.dennisaleksandrov.com/projects'>Check out more of my work</a>
     </div>
 
 
