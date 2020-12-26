@@ -1,4 +1,4 @@
-import React, { memo, Suspense } from 'react'
+import React, { Suspense } from 'react'
 import "slick-carousel/slick/slick.css";
 import "slick-carousel/slick/slick-theme.css";
 import TheSlider from "react-slick"

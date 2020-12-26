@@ -53,6 +53,7 @@ function MapProjects({ setImagesForWhatDevices, setSwipableViewsIndex, viewingMo
           })
           return (
             <div>
+              <div className="title-container"><h1>{project.title}</h1></div>
               <div className='project-images-container' key={project.title}>
                 {desktopImages[0] &&
                   <TransitionDevices deviceType='desktop' show={!viewingMobile}>
