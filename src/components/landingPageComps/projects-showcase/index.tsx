@@ -30,13 +30,6 @@ function ProjectsShowcase() {
       : sliderRef.current.slickNext()
   }
 
-
-  const LearnMoreLink = () =>
-    <div className='learnMoreLink'>
-      <a href='http://mybubble.dennisaleksandrov.com/projects'>Check out more of my work</a>
-    </div>
-
-
   return (
     <div style={viewingOnMobileDimensions({ height: '140vh', },)} className='project-section'>
       <animated.div ref={sectionRef} style={animOpacity} className="banner">
@@ -59,5 +52,11 @@ function ProjectsShowcase() {
     </div>
   )
 }
+
+export const LearnMoreLink = ({ isInContact }: { isInContact?}) =>
+  <div className={`learnMoreLink ${isInContact ? 'learnMoreLink-contact' : ''}`}>
+    <a href='http://mybubble.dennisaleksandrov.com/projects'>Check out more of my work</a>
+  </div>
+
 
 export default ProjectsShowcase

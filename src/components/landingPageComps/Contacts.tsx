@@ -6,6 +6,7 @@ import { rootReducerT } from '../../store'
 import { useSelector } from 'react-redux'
 import CopyToClipboard from 'react-copy-to-clipboard';
 import { viewingOnMobileDimensions } from '../../hooks/useIntroBanner'
+import { LearnMoreLink } from './projects-showcase'
 
 
 const { innerWidth } = window
@@ -34,7 +35,7 @@ function Contacts() {
     <animated.div style={viewingOnMobileDimensions()} ref={sectionRef} className='contacts-section'>
       <div className="contactsBox">
         <animated.div style={animOpacity} className="container">
-          <div className="contacts">
+          <div className="contacts" style={{paddingTop: 20, paddingBottom: 50}}>
             <p className={`
             ${!copiedText ? 'copied-animation-hide' : 'copied-animation-show'}
             dark-text
@@ -69,7 +70,9 @@ function Contacts() {
               <p>formidablepencil@gmail.com</p>
               <p>LinkedIn</p> */}
             </div>
+            <LearnMoreLink isInContact={true} />
           </div>
+
         </animated.div>
       </div>
     </animated.div>
