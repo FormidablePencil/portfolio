@@ -25,7 +25,7 @@ Server repo [here](https://github.com/FormidablePencil/portfolio-server)
 - Node <img src="https://i.ibb.co/Pm9X8Jq/Node.png" width="20" title="">
 - Express <img src="https://i.ibb.co/CJfJN1D/express-Logo.png" width="20" title="">
 - Google Cloud Platform <img src="https://i.ibb.co/qjpWtZc/google-cloud-platform.png" width="20" title="">
-- Go Daddy <img src="https://i.ibb.co/qjpWtZc/google-cloud-platform.png" width="20" title="">
+- Go Daddy <img src="https://i.ibb.co/sqfrGN4/Go-Daddy-Logo.png" width="20" title="">
 
 ### Wireframe
 
