@@ -2,7 +2,7 @@
 
 Website hosted on Go Daddy ~ https://www.dennisaleksandrov.com
 
-Portfolio is bit of a misnomer, where all my projects are in [this site](https://mybubble.dennisaleksandrov.com) and the code to it [here](https://github.com/FormidablePencil/my-bubble)
+Portfolio is bit of a misnomer. Where all my projects are is in [this site](https://mybubble.dennisaleksandrov.com) and the code to it [here](https://github.com/FormidablePencil/my-bubble)
 
 Built with the MERN Stack
 
