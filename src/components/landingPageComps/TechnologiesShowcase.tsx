@@ -35,7 +35,7 @@ function TechnologiesShowcase() {
             <TrailTech isIntersecting={isIntersecting} delay={700} generatedTechDataForCols={generatedTechDataForCols?.[1] ?? []} />
           </div>
           <animated.div className='midTech' style={opacityProps}>
-            <a href='http://mybubble.dennisaleksandrov.com/technologies' className='remove-underline'>
+            <a href='https://mybubble.dennisaleksandrov.com/technologies' className='remove-underline'>
               <div className="textContainer">
                 <div className='mainTechTextContainer'>
                   <p className='firstLeter'>M</p><p>ongo</p>
@@ -82,7 +82,7 @@ const TrailTech = ({
   else return (
     <>
       {trail.map((props, index) =>
-        <a href='http://mybubble.dennisaleksandrov.com/technologies' className='remove-underline'>
+        <a href='https://mybubble.dennisaleksandrov.com/technologies' className='remove-underline'>
           <animated.div
             style={props}
             className='imgContainer'>

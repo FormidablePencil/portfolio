@@ -55,7 +55,7 @@ function ProjectsShowcase() {
 
 export const LearnMoreLink = ({ isInContact }: { isInContact?}) =>
   <div className={`learnMoreLink ${isInContact ? 'learnMoreLink-contact' : ''}`}>
-    <a href='http://mybubble.dennisaleksandrov.com/projects'>Check out more of my work</a>
+    <a href='https://mybubble.dennisaleksandrov.com/projects'>Check out more of my work</a>
   </div>
 
 
