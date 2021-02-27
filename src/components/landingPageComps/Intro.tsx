@@ -13,19 +13,21 @@ const Intro = () => {
     <div style={viewingOnMobileDimensions()} className='introSection'>
       <animated.div className="banner" style={propsBannerAnim}>
         <animated.div className="textContainer" style={propsParagraphAnim}>
-          {intro &&
-            <div>
-              <p>
-                {intro[0]}
-              </p>
-              <p>
-                {intro[1]}
-              </p>
-              <p>
-                {intro[2]}
-              </p>
-            </div>
-          }
+          <p>Name's Dennis</p>
+          <p>It'll be my pleasure doing business with you</p>
+          {/* {intro && */}
+          {/*   <div> */}
+          {/*     <p> */}
+          {/*       {intro[0]} */}
+          {/*     </p> */}
+          {/*     <p> */}
+          {/*       {intro[1]} */}
+          {/*     </p> */}
+          {/*     <p> */}
+          {/*       {intro[2]} */}
+          {/*     </p> */}
+          {/*   </div> */}
+          {/* } */}
         </animated.div>
       </animated.div>
     </div >
