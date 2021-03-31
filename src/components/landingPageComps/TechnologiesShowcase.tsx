@@ -35,7 +35,7 @@ function TechnologiesShowcase() {
             <TrailTech isIntersecting={isIntersecting} delay={700} generatedTechDataForCols={generatedTechDataForCols?.[1] ?? []} />
           </div>
           <animated.div className='midTech' style={opacityProps}>
-            <a href='https://mybubble.dennisaleksandrov.com/technologies' className='remove-underline'>
+            <a href='https://dennisaleksandrov.com/technologies' className='remove-underline'>
               <div className="textContainer">
                 <div className='mainTechTextContainer'>
                   <p className='firstLeter'>M</p><p>ongo</p>
@@ -82,7 +82,7 @@ const TrailTech = ({
   else return (
     <>
       {trail.map((props, index) =>
-        <a href='https://mybubble.dennisaleksandrov.com/technologies' className='remove-underline'>
+        <a href='https://dennisaleksandrov.com/technologies' className='remove-underline'>
           <animated.div
             style={props}
             className='imgContainer'>
@@ -96,27 +96,3 @@ const TrailTech = ({
 
 export default memo(TechnologiesShowcase)
 
-
-
-
-
-
-
-
-// import jsLogo from '../assets/techLogo/hiclipart.com.png'
-// import htmlLogo from '../assets/techLogo/htmlLogo.png'
-// import cssLogo from '../assets/techLogo/cssLogo.png'
-// import logo1 from '../assets/techLogo/logo(1).svg';
-// import logo2 from '../assets/techLogo/logo.svg';
-// import logo3 from '../assets/techLogo/logo_raw.svg';
-// import logo4 from '../assets/techLogo/paper-logo.png';
-// import logo6 from '../assets/techLogo/reactNativeLogo.png';
-// import logo7 from '../assets/techLogo/svg+xml;base64,PHN2ZyBjbGFzcz0idy0xMCBoLTEwIGJsb2NrIG1kOmhpZGRlbiIgdmlld0JveD0iMCAwIDY0IDY0IiB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciPgogICAgICAgICAgICAgICAgICA8dGl0bGU+VGFpbHdpbmQgQ1NTPC90aXRsZT4KICAgICAgICAgICAgICAgICAgPHBhdGggZD0iT.svg';
-// import wordPressLogo from '../assets/techLogo/wordpressLogo.png';
-// import gatsbyLogo from '../assets/techLogo/Gatsby_Monogram.svg';
-// import github from '../assets/techLogo/github.png';
-// import typescript from '../assets/techLogo/typescript.svg';
-// import sassLogo from '../assets/techLogo/sassLogo.png';
-
-// import {useSelector} from 'react-redux';
-// import {rootReducerT} from '../store';
